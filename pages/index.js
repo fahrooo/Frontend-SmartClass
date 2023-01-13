@@ -36,12 +36,13 @@ export default function Home() {
       <main>
         <Box
           w="100%"
-          h="400"
+          h="600"
           bgGradient="linear(to-b, #355D77 20%, rgba(150, 155, 158, 0.389207), rgba(91, 118, 136, 0))"
           position="absolute"
           borderBottomRadius="50%"
           filter="auto"
-          blur="2px"
+          blur="1px"
+          top="-20px"
         />
         <Box
           bgImage="url('/_next/static/media/kelas.ec384f45.png')"
@@ -76,7 +77,7 @@ export default function Home() {
               <Box m="25px">
                 <Box>
                   <FormControl>
-                    <FormLabel fontSize="15px" color="#FFFFFF">
+                    <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
                       Email
                     </FormLabel>
                     <Input
@@ -84,13 +85,13 @@ export default function Home() {
                       h="35px"
                       bgColor="#D9D9D9"
                       borderRadius="15px"
-                      fontWeight="400"
+                      placeholder="email address"
                     />
                   </FormControl>
                 </Box>
                 <Box mt="20px">
                   <FormControl>
-                    <FormLabel fontSize="15px" color="#FFFFFF">
+                    <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
                       Password
                     </FormLabel>
                     <Input
@@ -98,7 +99,7 @@ export default function Home() {
                       h="35px"
                       bgColor="#D9D9D9"
                       borderRadius="15px"
-                      fontWeight="400"
+                      placeholder="********"
                     />
                   </FormControl>
                 </Box>
@@ -116,7 +117,12 @@ export default function Home() {
                   <Text fontSize="13px" color="#FFFFFF">
                     Belum memiliki akun?
                   </Text>
-                  <Text ms="5px" fontSize="13px" color="#FF9567" cursor="pointer">
+                  <Text
+                    ms="5px"
+                    fontSize="13px"
+                    color="#FF9567"
+                    cursor="pointer"
+                  >
                     Silahkan Register
                   </Text>
                 </Box>
