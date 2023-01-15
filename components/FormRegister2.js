@@ -10,9 +10,17 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const FormRegister2 = ({ setForm, setEmail, setPassword, setConfPassword }) => {
+const FormRegister2 = ({
+  setForm,
+  setEmail,
+  setPassword,
+  setConfPassword,
+  email,
+  password,
+  confPassword,
+}) => {
   return (
-    <Box w="350px" h="450px" bgColor="#393D43" borderRadius="40px">
+    <Box w="350px" h="465px" bgColor="#393D43" borderRadius="40px">
       <Box display="flex" justifyContent="center">
         <Stack alignItems="center" mt="33px">
           <Text fontSize="27px" color="#FFFFFF" fontWeight="700">
@@ -23,64 +31,67 @@ const FormRegister2 = ({ setForm, setEmail, setPassword, setConfPassword }) => {
           </Text>
         </Stack>
       </Box>
-      <Box mx="25px" mt="10px">
-        <Box>
-          <FormControl>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Email
-            </FormLabel>
-            <Input
-              type="email"
-              h="35px"
-              bgColor="#D9D9D9"
-              borderRadius="15px"
-              placeholder="Email Address"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box mt="10px">
-          <FormControl>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Password
-            </FormLabel>
-            <Input
-              type="password"
-              h="35px"
-              bgColor="#D9D9D9"
-              borderRadius="15px"
-              placeholder="********"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box mt="10px">
-          <FormControl>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Confirm Password
-            </FormLabel>
-            <Input
-              type="password"
-              h="35px"
-              bgColor="#D9D9D9"
-              borderRadius="15px"
-              placeholder="********"
-              onChange={(e) => {
-                setConfPassword(e.target.value);
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box w="100%" mt="20px">
-          <Button w="100%" colorScheme="messenger">
-            Register
-          </Button>
-        </Box>
-        <Box mt="20px" display="flex" justifyContent="center">
+      <Box mx="25px" mt="20px">
+        <form>
+          <Box>
+            <FormControl>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Email
+              </FormLabel>
+              <Input
+                type="email"
+                h="35px"
+                bgColor="#D9D9D9"
+                borderRadius="15px"
+                placeholder="Email Address"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                required
+              />
+            </FormControl>
+          </Box>
+          <Box mt="15px">
+            <FormControl>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Password
+              </FormLabel>
+              <Input
+                type="password"
+                h="35px"
+                bgColor="#D9D9D9"
+                borderRadius="15px"
+                placeholder="********"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </FormControl>
+          </Box>
+          <Box mt="15px">
+            <FormControl>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Confirm Password
+              </FormLabel>
+              <Input
+                type="password"
+                h="35px"
+                bgColor="#D9D9D9"
+                borderRadius="15px"
+                placeholder="********"
+                onChange={(e) => {
+                  setConfPassword(e.target.value);
+                }}
+              />
+            </FormControl>
+          </Box>
+          <Box w="100%" mt="20px">
+            <Button type="submit" w="100%" colorScheme="messenger">
+              Register
+            </Button>
+          </Box>
+        </form>
+        <Box mt="15px" display="flex" justifyContent="center">
           <Text fontSize="13px" color="#FFFFFF">
             Sudah memiliki akun?{" "}
             <Link

@@ -5,8 +5,8 @@ import FormRegister2 from "./FormRegister2";
 const Register = ({ setForm }) => {
   const [formRegister, setFormRegister] = useState(true);
   const [nama, setNama] = useState("");
-  const [nik, setNik] = useState(0);
-  const [unit, setUnit] = useState(0);
+  const [nik, setNik] = useState("");
+  const [unit, setUnit] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
@@ -18,15 +18,21 @@ const Register = ({ setForm }) => {
       setForm={setForm}
       setFormRegister={setFormRegister}
       setNama={setNama}
+      nama={nama}
       setNik={setNik}
+      nik={nik}
       setUnit={setUnit}
+      unit={unit}
     />
   ) : (
     <FormRegister2
       setForm={setForm}
       setEmail={setEmail}
+      email={email}
       setPassword={setPassword}
+      password={password}
       setConfPassword={setConfPassword}
+      confPassword={confPassword}
     />
   );
 };
