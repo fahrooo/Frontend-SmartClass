@@ -11,7 +11,7 @@ import React from "react";
 
 const Login = ({ setForm }) => {
   return (
-    <Box w="350px" h="440px" bgColor="#393D43" borderRadius="40px">
+    <Box w="350px" h="410px" bgColor="#393D43" borderRadius="40px">
       <Box display="flex" justifyContent="center">
         <Text fontSize="27px" color="#FFFFFF" mt="33px" fontWeight="700">
           Log In
