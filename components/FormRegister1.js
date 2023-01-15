@@ -58,29 +58,12 @@ const FormRegister1 = ({
             <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
               Nama Lengkap
             </FormLabel>
-            {isErrorNama ? (
-              <Tooltip
-                label="Nama Lengkap is required"
-                placement="bottom-end"
-                bg="red.600"
-                isOpen
-              >
-                <Input
-                  type="text"
-                  h="35px"
-                  bgColor="#D9D9D9"
-                  borderRadius="15px"
-                  placeholder="Nama Lengkap"
-                  value={nama}
-                  onChange={(e) => {
-                    setNama(e.target.value);
-                  }}
-                  onBlur={() => {
-                    setFocusNama(true);
-                  }}
-                />
-              </Tooltip>
-            ) : (
+            <Tooltip
+              label="Nama Lengkap is required"
+              placement="bottom-end"
+              bg="red.600"
+              isOpen={isErrorNama}
+            >
               <Input
                 type="text"
                 h="35px"
@@ -95,7 +78,7 @@ const FormRegister1 = ({
                   setFocusNama(true);
                 }}
               />
-            )}
+            </Tooltip>
           </FormControl>
         </Box>
         <Box mt="15px">
@@ -103,29 +86,12 @@ const FormRegister1 = ({
             <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
               NIK
             </FormLabel>
-            {isErrorNik ? (
-              <Tooltip
-                label="NIK is required"
-                placement="bottom-end"
-                bg="red.600"
-                isOpen
-              >
-                <Input
-                  type="number"
-                  h="35px"
-                  bgColor="#D9D9D9"
-                  borderRadius="15px"
-                  placeholder="NIK"
-                  value={nik}
-                  onChange={(e) => {
-                    setNik(e.target.value);
-                  }}
-                  onBlur={() => {
-                    setFocusNik(true);
-                  }}
-                />
-              </Tooltip>
-            ) : (
+            <Tooltip
+              label="NIK is required"
+              placement="bottom-end"
+              bg="red.600"
+              isOpen={isErrorNik}
+            >
               <Input
                 type="number"
                 h="35px"
@@ -140,7 +106,7 @@ const FormRegister1 = ({
                   setFocusNik(true);
                 }}
               />
-            )}
+            </Tooltip>
           </FormControl>
         </Box>
         <Box mt="15px">
@@ -148,29 +114,12 @@ const FormRegister1 = ({
             <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
               Unit
             </FormLabel>
-            {isErrorUnit ? (
-              <Tooltip
-                label="Unit is required"
-                placement="bottom-end"
-                bg="red.600"
-                isOpen
-              >
-                <Input
-                  type="text"
-                  h="35px"
-                  bgColor="#D9D9D9"
-                  borderRadius="15px"
-                  placeholder="Unit"
-                  value={unit}
-                  onChange={(e) => {
-                    setUnit(e.target.value);
-                  }}
-                  onBlur={() => {
-                    setFocusUnit(true);
-                  }}
-                />
-              </Tooltip>
-            ) : (
+            <Tooltip
+              label="Unit is required"
+              placement="bottom-end"
+              bg="red.600"
+              isOpen={isErrorUnit}
+            >
               <Input
                 type="text"
                 h="35px"
@@ -185,34 +134,21 @@ const FormRegister1 = ({
                   setFocusUnit(true);
                 }}
               />
-            )}
+            </Tooltip>
           </FormControl>
         </Box>
         <Box w="100%" mt="20px" display="flex" justifyContent="end">
-          {disabled ? (
-            <Button
-              rightIcon={<ArrowForwardIcon />}
-              colorScheme="messenger"
-              variant="solid"
-              onClick={() => {
-                setFormRegister(false);
-              }}
-              isDisabled
-            >
-              Lanjut
-            </Button>
-          ) : (
-            <Button
-              rightIcon={<ArrowForwardIcon />}
-              colorScheme="messenger"
-              variant="solid"
-              onClick={() => {
-                setFormRegister(false);
-              }}
-            >
-              Lanjut
-            </Button>
-          )}
+          <Button
+            rightIcon={<ArrowForwardIcon />}
+            colorScheme="messenger"
+            variant="solid"
+            onClick={() => {
+              setFormRegister(false);
+            }}
+            isDisabled={disabled}
+          >
+            Lanjut
+          </Button>
         </Box>
         <Box mt="15px" display="flex" justifyContent="center">
           <Text fontSize="13px" color="#FFFFFF">

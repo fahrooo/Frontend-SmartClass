@@ -7,6 +7,7 @@ import logo from "../assets/images/logo.png";
 import background from "../assets/images/kelas.png";
 import Login from "@/components/Login.js";
 import Register from "@/components/Register";
+import { Toast } from "@chakra-ui/react";
 
 export default function Home() {
   const [lampu, setLampu] = useState(true);
