@@ -65,7 +65,7 @@ const FormRegister1 = ({
           </Text>
         </Stack>
       </Box>
-      <Box mx="25px" mt="20px">
+      <Box mx="25px" mt="10px">
         <Box>
           <FormControl isInvalid={isErrorNama}>
             <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">

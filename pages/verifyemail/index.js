@@ -2,16 +2,25 @@
 import HeaderTitle from "@/components/HeaderTitle";
 import { Box, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import background from "../../assets/images/kelas.png";
 import VeryfyEmail from "@/components/VeryfyEmail";
 import SendVeryfyEmail from "@/components/SendVerifyEmail";
+import useActionGlobal from "@/store/UseActionGlobal";
 
 const index = () => {
   const url = `url('${background.src}')`;
 
-  const [sendEmail, setSendEmail] = useState(true);
+  const [sendEmail, setSendEmail] = useState("tahap1");
+
+  const info = useActionGlobal((state) => state.infoStatus);
+  const emailVerify = useActionGlobal((state) => state.email);
+
+  useEffect(() => {
+    setSendEmail(info);
+  }, [info]);
+
   return (
     <>
       <HeaderTitle />
@@ -33,8 +42,8 @@ const index = () => {
           bgSize="cover"
           h="100vh"
           display="flex"
-          alignItems="center"
           justifyContent="center"
+          py="70px"
         >
           <Box position="absolute">
             <Box mb="50px" display="flex" justifyContent="center">
@@ -45,7 +54,8 @@ const index = () => {
                 </Text>
               </Stack>
             </Box>
-            {sendEmail ? <VeryfyEmail /> : <SendVeryfyEmail />}
+            {sendEmail === "tahap1" && <SendVeryfyEmail />}
+            {sendEmail === "tahap2" && <VeryfyEmail emailVerify={emailVerify} />}
           </Box>
         </Box>
       </main>

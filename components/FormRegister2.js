@@ -10,9 +10,11 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { BsArrowLeft } from "react-icons/bs";
 
 const FormRegister2 = ({
   setForm,
+  setFormRegister,
   setEmail,
   setPassword,
   setConfPassword,
@@ -21,9 +23,9 @@ const FormRegister2 = ({
   confPassword,
   isLoading,
   handleRegister,
+  disabled,
+  setDisabled,
 }) => {
-  const [disabled, setDisabled] = useState(true);
-
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusPassword, setFocusPassword] = useState(false);
   const [focusConfPassword, setFocusConfPassword] = useState(false);
@@ -67,13 +69,20 @@ const FormRegister2 = ({
       setIsErrorConfPassword(false);
       setMsgErrorConfPassword("");
     }
-  }, [email, password, confPassword, focusPassword, focusConfPassword]);
+  }, [
+    email,
+    password,
+    confPassword,
+    focusPassword,
+    focusConfPassword,
+    setDisabled,
+  ]);
 
   const isErrorEmail = focusEmail === true && email === "";
   return (
     <Box w="350px" h="465px" bgColor="#393D43" borderRadius="40px">
       <Box display="flex" justifyContent="center">
-        <Stack alignItems="center" mt="33px">
+        <Stack alignItems="center" mt="20px">
           <Text fontSize="27px" color="#FFFFFF" fontWeight="700">
             Register
           </Text>
@@ -82,7 +91,7 @@ const FormRegister2 = ({
           </Text>
         </Stack>
       </Box>
-      <Box mx="25px" mt="20px">
+      <Box mx="25px" mt="10px">
         <Box>
           <FormControl isInvalid={isErrorEmail}>
             <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
@@ -178,7 +187,20 @@ const FormRegister2 = ({
             Register
           </Button>
         </Box>
-        <Box mt="15px" display="flex" justifyContent="center">
+        <Stack direction="column" mt="15px" alignItems="center">
+          <Text fontSize="13px" color="#FFFFFF">
+            <Link
+              color="messenger.400"
+              onClick={() => {
+                setFormRegister(true);
+              }}
+              display="flex"
+              alignItems="center"
+              gap="1"
+            >
+              <BsArrowLeft /> Kembali
+            </Link>
+          </Text>
           <Text fontSize="13px" color="#FFFFFF">
             Sudah memiliki akun?{" "}
             <Link
@@ -190,7 +212,7 @@ const FormRegister2 = ({
               Silahkan Log In
             </Link>
           </Text>
-        </Box>
+        </Stack>
       </Box>
     </Box>
   );

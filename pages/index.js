@@ -16,8 +16,6 @@ export default function Home() {
   const handleLampu = async () => {
     setLampu(!lampu);
 
-    console.log(lampu);
-
     try {
       await axios.post("http://localhost:5000/relaypost", {
         topic: "BANGTI",

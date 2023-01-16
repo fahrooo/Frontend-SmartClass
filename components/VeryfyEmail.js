@@ -11,12 +11,18 @@ import {
 } from "@chakra-ui/react";
 import { TbSend } from "react-icons/tb";
 
-const VeryfyEmail = () => {
+const VeryfyEmail = ({ emailVerify }) => {
   return (
-    <Box w="350px" h="max-content" bgColor="#393D43" borderRadius="40px" p="20px">
+    <Box
+      w="350px"
+      h="max-content"
+      bgColor="#393D43"
+      borderRadius="40px"
+      p="20px"
+    >
       <Stack direction="column" alignItems="center">
         <Box>
-          <Icon as={TbSend} w={"36"} h={"36"} color="#FFFFFF" />
+          <Icon as={TbSend} w={"24"} h={"24"} color="#FFFFFF" />
         </Box>
         <Box>
           <Text fontSize="27px" color="#FFFFFF" fontWeight="700">
@@ -24,9 +30,24 @@ const VeryfyEmail = () => {
           </Text>
         </Box>
         <Box>
-          <Text textAlign="center" color="#FFFFFF">
-            Kami telah mengirimkan link aktivasi akun. Silahkan cek email anda
-            untuk verifikasi, Terimakasih.
+          <Text textAlign="center" fontSize="13px" color="#FFFFFF" mt="10px">
+            Kami telah mengirimkan link aktivasi akun ke email {emailVerify}
+          </Text>
+          <Text textAlign="center" fontSize="13px" color="#FFFFFF">
+            Silahkan cek email anda untuk verifikasi, Terimakasih.
+          </Text>
+        </Box>
+        <Box>
+          <Text fontSize="13px" color="#FFFFFF" mt="10px">
+            Belum mendapat link aktivasi akun?{" "}
+            <Link
+              color="#FF9567"
+              onClick={() => {
+                setForm(false);
+              }}
+            >
+              Kirim ulang
+            </Link>
           </Text>
         </Box>
       </Stack>
