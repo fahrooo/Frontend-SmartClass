@@ -28,16 +28,29 @@ const FormRegister1 = ({
   const [focusNik, setFocusNik] = useState(false);
   const [focusUnit, setFocusUnit] = useState(false);
 
+  const [isErrorNik, setIsErrorNik] = useState(false);
+  const [msgErrorNik, setMsgErrorNik] = useState("");
+
   useEffect(() => {
-    if (nama != "" && nik != "" && unit != "") {
+    if (nama != "" && nik != "" && unit != "" && nik.length >= 16) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [nama, nik, unit]);
+
+    if (focusNik === true && nik === "") {
+      setIsErrorNik(true);
+      setMsgErrorNik("NIK is required");
+    } else if (focusNik === true && nik.length < 16) {
+      setIsErrorNik(true);
+      setMsgErrorNik("NIK must be at least 16 number");
+    } else {
+      setIsErrorNik(false);
+      setMsgErrorNik("");
+    }
+  }, [nama, nik, unit, focusNik]);
 
   const isErrorNama = focusNama === true && nama === "";
-  const isErrorNik = focusNik === true && nik === "";
   const isErrorUnit = focusUnit === true && unit === "";
 
   return (
@@ -87,7 +100,7 @@ const FormRegister1 = ({
               NIK
             </FormLabel>
             <Tooltip
-              label="NIK is required"
+              label={msgErrorNik}
               placement="bottom-end"
               bg="red.600"
               isOpen={isErrorNik}
