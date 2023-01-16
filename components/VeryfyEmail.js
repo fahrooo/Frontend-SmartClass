@@ -13,9 +13,9 @@ import { TbSend } from "react-icons/tb";
 
 const VeryfyEmail = () => {
   return (
-    <Box w="350px" h="410px" bgColor="#393D43" borderRadius="40px">
+    <Box w="350px" h="max-content" bgColor="#393D43" borderRadius="40px" p="20px">
       <Stack direction="column" alignItems="center">
-        <Box mt="33px">
+        <Box>
           <Icon as={TbSend} w={"36"} h={"36"} color="#FFFFFF" />
         </Box>
         <Box>
@@ -25,7 +25,7 @@ const VeryfyEmail = () => {
         </Box>
         <Box>
           <Text textAlign="center" color="#FFFFFF">
-            Kami telah mengirimkan link aktivasi akun, Silahkan cek email anda
+            Kami telah mengirimkan link aktivasi akun. Silahkan cek email anda
             untuk verifikasi, Terimakasih.
           </Text>
         </Box>
