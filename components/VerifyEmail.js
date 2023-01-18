@@ -10,21 +10,33 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { TbSend } from "react-icons/tb";
 
 const VeryfyEmail = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
 
   useEffect(() => {
     const emailLocal = JSON.parse(localStorage.getItem("email"));
     if (emailLocal) {
       setEmail(emailLocal);
+    } else {
+      router.push("/sendverifyemail");
     }
-  }, []);
-  const data = axios.post("http://localhost:5000/sendverifyemail", {
-    email,
-  });
+    const checkVerifiyemail = axios
+      .post("http://localhost:5000/checkverifyemail", {
+        email,
+      })
+      .then((res) => {
+        if (res.data.status === 200 && res.data.message === "Email verified") {
+          localStorage.removeItem("email");
+          router.push("/aktivasiakun");
+        }
+      });
+  }, [router, email]);
   return (
     <Box
       w="350px"
