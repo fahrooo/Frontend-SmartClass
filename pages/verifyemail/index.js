@@ -5,9 +5,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import background from "../../assets/images/kelas.png";
-import VeryfyEmail from "@/components/VeryfyEmail";
+import VerifyEmail from "@/components/VerifyEmail";
 import SendVeryfyEmail from "@/components/SendVerifyEmail";
 import useActionGlobal from "@/store/UseActionGlobal";
+import SuccessVerifyEmail from "@/components/successVerifyEmail";
 
 const index = () => {
   const url = `url('${background.src}')`;
@@ -54,8 +55,11 @@ const index = () => {
                 </Text>
               </Stack>
             </Box>
-            {sendEmail === "tahap1" && <SendVeryfyEmail />}
-            {sendEmail === "tahap2" && <VeryfyEmail emailVerify={emailVerify} />}
+            {sendEmail === "tahap3" && <SendVeryfyEmail />}
+            {sendEmail === "tahap2" && (
+              <VerifyEmail emailVerify={emailVerify} />
+            )}
+            {sendEmail === "tahap1" && <SuccessVerifyEmail />}
           </Box>
         </Box>
       </main>

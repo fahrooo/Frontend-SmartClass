@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
+import validator from "validator";
 
 const FormRegister2 = ({
   setForm,
@@ -30,14 +31,20 @@ const FormRegister2 = ({
   const [focusPassword, setFocusPassword] = useState(false);
   const [focusConfPassword, setFocusConfPassword] = useState(false);
 
+  const [isErrorEmail, setIsErrorEmail] = useState(false);
+  const [msgErrorEmail, setMsgErrorEmail] = useState("");
   const [isErrorPassword, setIsErrorPassword] = useState(false);
   const [msgErrorPassword, setMsgErrorPassword] = useState("");
   const [isErrorConfPassword, setIsErrorConfPassword] = useState(false);
   const [msgErrorConfPassword, setMsgErrorConfPassword] = useState("");
 
+  const isPassword = validator.isStrongPassword(password);
+  const isEmail = validator.isEmail(email);
+
   useEffect(() => {
     if (
       email != "" &&
+      isEmail == true &&
       password != "" &&
       confPassword != "" &&
       password.length >= 8 &&
@@ -48,12 +55,28 @@ const FormRegister2 = ({
       setDisabled(true);
     }
 
+    if (focusEmail === true && email === "") {
+      setIsErrorEmail(true);
+      setMsgErrorEmail("Email is required");
+    } else if (focusEmail === true && isEmail == false) {
+      setIsErrorEmail(true);
+      setMsgErrorEmail("Email incorrect");
+    } else {
+      setIsErrorEmail(false);
+      setMsgErrorEmail("");
+    }
+
     if (focusPassword === true && password === "") {
       setIsErrorPassword(true);
       setMsgErrorPassword("Password is required");
     } else if (focusPassword === true && password.length < 8) {
       setIsErrorPassword(true);
       setMsgErrorPassword("Password must be at least 8 characters");
+    } else if (focusPassword === true && isPassword == false) {
+      setIsErrorPassword(true);
+      setMsgErrorPassword(
+        "Password must be at one uppercase, one lowercase, one numeric & one symbol character"
+      );
     } else {
       setIsErrorPassword(false);
       setMsgErrorPassword("");
@@ -74,11 +97,13 @@ const FormRegister2 = ({
     password,
     confPassword,
     focusPassword,
+    focusEmail,
     focusConfPassword,
     setDisabled,
+    isEmail,
+    isPassword
   ]);
 
-  const isErrorEmail = focusEmail === true && email === "";
   return (
     <Box w="350px" h="465px" bgColor="#393D43" borderRadius="40px">
       <Box display="flex" justifyContent="center">
@@ -98,7 +123,7 @@ const FormRegister2 = ({
               Email
             </FormLabel>
             <Tooltip
-              label="Email is required"
+              label={msgErrorEmail}
               placement="bottom-end"
               bg="red.600"
               isOpen={isErrorEmail}
