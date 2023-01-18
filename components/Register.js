@@ -9,7 +9,6 @@ import useActionGlobal from "@/store/UseActionGlobal";
 const Register = ({ setForm }) => {
   const toast = useToast();
 
-  const updateInfoStatus = useActionGlobal((state) => state.updateInfoStatus);
   const updateEmail = useActionGlobal((state) => state.updateEmail);
 
   const [formRegister, setFormRegister] = useState(true);
@@ -51,8 +50,7 @@ const Register = ({ setForm }) => {
           position: "top",
           isClosable: true,
         });
-        await updateInfoStatus("tahap2");
-        await updateEmail(email);
+        localStorage.setItem("email", JSON.stringify([email]));
         router.push("/verifyemail");
       }
       if (

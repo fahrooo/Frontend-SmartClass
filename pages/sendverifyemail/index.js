@@ -1,16 +1,13 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import HeaderTitle from "@/components/HeaderTitle";
-import { Box, Stack, Text } from "@chakra-ui/react";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import logo from "../../assets/images/logo.png";
 import background from "../../assets/images/kelas.png";
-import VerifyEmail from "@/components/VerifyEmail";
-import useActionGlobal from "@/store/UseActionGlobal";
+import HeaderTitle from "@/components/HeaderTitle";
+import { Box, Stack, Text } from "@chakra-ui/react";
+import SendVeryfyEmail from "@/components/SendVerifyEmail";
+import Image from "next/image";
 
 const index = () => {
   const url = `url('${background.src}')`;
-  const emailVerify = useActionGlobal((state) => state.email);
   return (
     <>
       <HeaderTitle />
@@ -44,7 +41,7 @@ const index = () => {
                 </Text>
               </Stack>
             </Box>
-            <VerifyEmail emailVerify={emailVerify} />
+            <SendVeryfyEmail />
           </Box>
         </Box>
       </main>

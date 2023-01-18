@@ -9,9 +9,22 @@ import {
   Icon,
   Stack,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { TbSend } from "react-icons/tb";
 
-const VeryfyEmail = ({ emailVerify }) => {
+const VeryfyEmail = () => {
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const emailLocal = JSON.parse(localStorage.getItem("email"));
+    if (emailLocal) {
+      setEmail(emailLocal);
+    }
+  }, []);
+  const data = axios.post("http://localhost:5000/sendverifyemail", {
+    email,
+  });
   return (
     <Box
       w="350px"
@@ -31,7 +44,7 @@ const VeryfyEmail = ({ emailVerify }) => {
         </Box>
         <Box>
           <Text textAlign="center" fontSize="13px" color="#FFFFFF" mt="10px">
-            Kami telah mengirimkan link aktivasi akun ke email {emailVerify}
+            Kami telah mengirimkan link aktivasi akun ke email {email}
           </Text>
           <Text textAlign="center" fontSize="13px" color="#FFFFFF">
             Silahkan cek email anda untuk verifikasi, Terimakasih.
