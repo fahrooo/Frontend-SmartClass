@@ -14,7 +14,7 @@ const Login = ({ setForm }) => {
     <Box w="350px" h="410px" bgColor="#393D43" borderRadius="40px">
       <Box display="flex" justifyContent="center">
         <Text fontSize="27px" color="#FFFFFF" mt="33px" fontWeight="700">
-          Log In
+          Login
         </Text>
       </Box>
       <Box m="25px">
@@ -53,7 +53,7 @@ const Login = ({ setForm }) => {
         </Box>
         <Box w="100%" mt="20px">
           <Button w="100%" colorScheme="messenger">
-            Log In
+            Login
           </Button>
         </Box>
         <Box mt="20px" display="flex" justifyContent="center">

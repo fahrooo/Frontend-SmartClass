@@ -8,7 +8,7 @@ import background from "../../assets/images/kelas.png";
 import VerifyEmail from "@/components/VerifyEmail";
 import SendVeryfyEmail from "@/components/SendVerifyEmail";
 import useActionGlobal from "@/store/UseActionGlobal";
-import SuccessVerifyEmail from "@/components/successVerifyEmail";
+import SuccessVerifyEmail from "@/components/SuccessVerifyEmail";
 
 const index = () => {
   const url = `url('${background.src}')`;
@@ -55,11 +55,10 @@ const index = () => {
                 </Text>
               </Stack>
             </Box>
-            {sendEmail === "tahap3" && <SendVeryfyEmail />}
+            {sendEmail === "tahap1" && <SuccessVerifyEmail />}
             {sendEmail === "tahap2" && (
               <VerifyEmail emailVerify={emailVerify} />
             )}
-            {sendEmail === "tahap1" && <SuccessVerifyEmail />}
           </Box>
         </Box>
       </main>
