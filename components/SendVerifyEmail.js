@@ -13,14 +13,14 @@ import React from "react";
 const SendVeryfyEmail = () => {
   return (
     <Box
-      w="400px"
+      w="350px"
       h="max-content"
       bgColor="#393D43"
       borderRadius="40px"
       p="20px"
     >
       <Stack direction="column" alignItems="center">
-        <Text fontSize="27px" color="#FFFFFF" mt="33px" fontWeight="700">
+        <Text fontSize="25px" color="#FFFFFF" mt="33px" fontWeight="700">
           Email Belum Terverifikasi!
         </Text>
         <Text fontSize="13px" color="#FFFFFF" mt="33px">

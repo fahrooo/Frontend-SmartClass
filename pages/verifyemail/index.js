@@ -55,10 +55,11 @@ const index = () => {
                 </Text>
               </Stack>
             </Box>
-            {sendEmail === "tahap1" && <SuccessVerifyEmail />}
+            {sendEmail === "tahap1" && <SendVeryfyEmail />}
             {sendEmail === "tahap2" && (
               <VerifyEmail emailVerify={emailVerify} />
             )}
+            {sendEmail === "tahap3" && <SuccessVerifyEmail />}
           </Box>
         </Box>
       </main>
