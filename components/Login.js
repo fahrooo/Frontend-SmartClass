@@ -2,8 +2,6 @@
 import {
   Box,
   Button,
-  FormControl,
-  FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
@@ -21,7 +19,7 @@ const Login = ({ setForm }) => {
       h="max-content"
       bgColor="#393D43"
       borderRadius="40px"
-      py="10px"
+      py="5px"
     >
       <Box display="flex" justifyContent="center">
         <Text fontSize="27px" color="#FFFFFF" mt="33px" fontWeight="700">
