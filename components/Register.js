@@ -55,7 +55,7 @@ const Register = ({ setForm }) => {
       }
       if (
         data.data.status === 400 &&
-        data.data.message === "NIK already exist"
+        data.data.message === "NIK sudah ada"
       ) {
         setIsLoading(false);
         setDisabled(false);
@@ -70,7 +70,7 @@ const Register = ({ setForm }) => {
       }
       if (
         data.data.status === 400 &&
-        data.data.message === "Email already exist"
+        data.data.message === "Email sudah ada"
       ) {
         setIsLoading(false);
         setDisabled(false);
@@ -83,7 +83,7 @@ const Register = ({ setForm }) => {
           isClosable: true,
         });
       }
-      if (data.data.status === 400 && data.data.message === "Email incorrect") {
+      if (data.data.status === 400 && data.data.message === "Email tidak valid") {
         setIsLoading(false);
         setDisabled(false);
         toast({
@@ -96,6 +96,7 @@ const Register = ({ setForm }) => {
         });
       }
     } catch (error) {
+      setDisabled(false);
       setIsLoading(false);
     }
   };

@@ -1,17 +1,28 @@
+/* eslint-disable react/no-children-prop */
 import {
   Box,
   Button,
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
+  InputLeftElement,
   Link,
   Text,
 } from "@chakra-ui/react";
+import { GrMail } from "react-icons/gr";
+import { FaLock } from "react-icons/fa";
 import React from "react";
 
 const Login = ({ setForm }) => {
   return (
-    <Box w="350px" h="410px" bgColor="#393D43" borderRadius="40px">
+    <Box
+      w="350px"
+      h="max-content"
+      bgColor="#393D43"
+      borderRadius="40px"
+      py="10px"
+    >
       <Box display="flex" justifyContent="center">
         <Text fontSize="27px" color="#FFFFFF" mt="33px" fontWeight="700">
           Login
@@ -19,32 +30,36 @@ const Login = ({ setForm }) => {
       </Box>
       <Box m="25px">
         <Box>
-          <FormControl>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Email
-            </FormLabel>
+          <InputGroup>
+            <InputLeftElement
+              fontSize="20px"
+              color="gray.300"
+              pointerEvents="none"
+              children={<GrMail />}
+            />
             <Input
               type="email"
-              h="35px"
-              bgColor="#D9D9D9"
-              borderRadius="15px"
               placeholder="Email Address"
+              variant="flushed"
+              color="gray.300"
             />
-          </FormControl>
+          </InputGroup>
         </Box>
         <Box mt="20px">
-          <FormControl>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Password
-            </FormLabel>
+          <InputGroup>
+            <InputLeftElement
+              fontSize="20px"
+              color="gray.300"
+              pointerEvents="none"
+              children={<FaLock />}
+            />
             <Input
               type="password"
-              h="35px"
-              bgColor="#D9D9D9"
-              borderRadius="15px"
               placeholder="********"
+              variant="flushed"
+              color="gray.300"
             />
-          </FormControl>
+          </InputGroup>
         </Box>
         <Box mt="20px" display="flex" justifyContent="end">
           <Text fontSize="13px" color="#FFFFFF">

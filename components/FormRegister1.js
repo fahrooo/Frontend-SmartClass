@@ -40,10 +40,10 @@ const FormRegister1 = ({
 
     if (focusNik === true && nik === "") {
       setIsErrorNik(true);
-      setMsgErrorNik("NIK is required");
+      setMsgErrorNik("NIK harus diisi");
     } else if (focusNik === true && nik.length < 16) {
       setIsErrorNik(true);
-      setMsgErrorNik("NIK must be at least 16 number");
+      setMsgErrorNik("NIK harus 16 angka");
     } else {
       setIsErrorNik(false);
       setMsgErrorNik("");
@@ -52,6 +52,10 @@ const FormRegister1 = ({
 
   const isErrorNama = focusNama === true && nama === "";
   const isErrorUnit = focusUnit === true && unit === "";
+
+  const handleLanjut = () => {
+    setFormRegister(false);
+  };
 
   return (
     <Box w="350px" h="465px" bgColor="#393D43" borderRadius="40px">
@@ -66,103 +70,103 @@ const FormRegister1 = ({
         </Stack>
       </Box>
       <Box mx="25px" mt="10px">
-        <Box>
-          <FormControl isInvalid={isErrorNama}>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Nama Lengkap
-            </FormLabel>
-            <Tooltip
-              label="Nama Lengkap is required"
-              placement="bottom-end"
-              bg="red.600"
-              isOpen={isErrorNama}
+        <form onSubmit={handleLanjut}>
+          <Box>
+            <FormControl isInvalid={isErrorNama}>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Nama Lengkap
+              </FormLabel>
+              <Tooltip
+                label="Nama Lengkap harus diisi"
+                placement="bottom-end"
+                bg="red.600"
+                isOpen={isErrorNama}
+              >
+                <Input
+                  variant="flushed"
+                  type="text"
+                  h="35px"
+                  color="#FFFFFF"
+                  placeholder="Nama Lengkap"
+                  value={nama}
+                  onChange={(e) => {
+                    setNama(e.target.value);
+                  }}
+                  onBlur={() => {
+                    setFocusNama(true);
+                  }}
+                />
+              </Tooltip>
+            </FormControl>
+          </Box>
+          <Box mt="15px">
+            <FormControl isInvalid={isErrorNik}>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                NIK
+              </FormLabel>
+              <Tooltip
+                label={msgErrorNik}
+                placement="bottom-end"
+                bg="red.600"
+                isOpen={isErrorNik}
+              >
+                <Input
+                  variant="flushed"
+                  type="number"
+                  h="35px"
+                  color="#FFFFFF"
+                  placeholder="NIK"
+                  value={nik}
+                  onChange={(e) => {
+                    setNik(e.target.value);
+                  }}
+                  onBlur={() => {
+                    setFocusNik(true);
+                  }}
+                />
+              </Tooltip>
+            </FormControl>
+          </Box>
+          <Box mt="15px">
+            <FormControl isInvalid={isErrorUnit}>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Unit
+              </FormLabel>
+              <Tooltip
+                label="Unit harus diisi"
+                placement="bottom-end"
+                bg="red.600"
+                isOpen={isErrorUnit}
+              >
+                <Input
+                  variant="flushed"
+                  type="text"
+                  h="35px"
+                  color="#FFFFFF"
+                  placeholder="Unit"
+                  value={unit}
+                  onChange={(e) => {
+                    setUnit(e.target.value);
+                  }}
+                  onBlur={() => {
+                    setFocusUnit(true);
+                  }}
+                />
+              </Tooltip>
+            </FormControl>
+          </Box>
+          <Box w="100%" mt="20px" display="flex" justifyContent="end">
+            <Button
+              type="submit"
+              rightIcon={<ArrowForwardIcon />}
+              colorScheme="messenger"
+              variant="solid"
+              isDisabled={disabled}
             >
-              <Input
-                type="text"
-                h="35px"
-                bgColor="#D9D9D9"
-                borderRadius="15px"
-                placeholder="Nama Lengkap"
-                value={nama}
-                onChange={(e) => {
-                  setNama(e.target.value);
-                }}
-                onBlur={() => {
-                  setFocusNama(true);
-                }}
-              />
-            </Tooltip>
-          </FormControl>
-        </Box>
-        <Box mt="15px">
-          <FormControl isInvalid={isErrorNik}>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              NIK
-            </FormLabel>
-            <Tooltip
-              label={msgErrorNik}
-              placement="bottom-end"
-              bg="red.600"
-              isOpen={isErrorNik}
-            >
-              <Input
-                type="number"
-                h="35px"
-                bgColor="#D9D9D9"
-                borderRadius="15px"
-                placeholder="NIK"
-                value={nik}
-                onChange={(e) => {
-                  setNik(e.target.value);
-                }}
-                onBlur={() => {
-                  setFocusNik(true);
-                }}
-              />
-            </Tooltip>
-          </FormControl>
-        </Box>
-        <Box mt="15px">
-          <FormControl isInvalid={isErrorUnit}>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Unit
-            </FormLabel>
-            <Tooltip
-              label="Unit is required"
-              placement="bottom-end"
-              bg="red.600"
-              isOpen={isErrorUnit}
-            >
-              <Input
-                type="text"
-                h="35px"
-                bgColor="#D9D9D9"
-                borderRadius="15px"
-                placeholder="Unit"
-                value={unit}
-                onChange={(e) => {
-                  setUnit(e.target.value);
-                }}
-                onBlur={() => {
-                  setFocusUnit(true);
-                }}
-              />
-            </Tooltip>
-          </FormControl>
-        </Box>
-        <Box w="100%" mt="20px" display="flex" justifyContent="end">
-          <Button
-            rightIcon={<ArrowForwardIcon />}
-            colorScheme="messenger"
-            variant="solid"
-            onClick={() => {
-              setFormRegister(false);
-            }}
-            isDisabled={disabled}
-          >
-            Lanjut
-          </Button>
-        </Box>
+              Lanjut
+            </Button>
+          </Box>
+        </form>
         <Box mt="15px" display="flex" justifyContent="center">
           <Text fontSize="13px" color="#FFFFFF">
             Sudah memiliki akun?{" "}

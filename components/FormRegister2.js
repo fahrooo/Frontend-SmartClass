@@ -57,10 +57,10 @@ const FormRegister2 = ({
 
     if (focusEmail === true && email === "") {
       setIsErrorEmail(true);
-      setMsgErrorEmail("Email is required");
+      setMsgErrorEmail("Email harus diisi");
     } else if (focusEmail === true && isEmail == false) {
       setIsErrorEmail(true);
-      setMsgErrorEmail("Email incorrect");
+      setMsgErrorEmail("Email tidak valid");
     } else {
       setIsErrorEmail(false);
       setMsgErrorEmail("");
@@ -68,14 +68,14 @@ const FormRegister2 = ({
 
     if (focusPassword === true && password === "") {
       setIsErrorPassword(true);
-      setMsgErrorPassword("Password is required");
+      setMsgErrorPassword("Password harus diisi");
     } else if (focusPassword === true && password.length < 8) {
       setIsErrorPassword(true);
-      setMsgErrorPassword("Password must be at least 8 characters");
+      setMsgErrorPassword("Password harus 8 karakter");
     } else if (focusPassword === true && isPassword == false) {
       setIsErrorPassword(true);
       setMsgErrorPassword(
-        "Password must be at one uppercase, one lowercase, one numeric & one symbol character"
+        "Password harus terdapat 1 huruf besar, 1 huruf kecil, 1 angka dan 1 simbol"
       );
     } else {
       setIsErrorPassword(false);
@@ -84,10 +84,10 @@ const FormRegister2 = ({
 
     if (focusConfPassword === true && confPassword === "") {
       setIsErrorConfPassword(true);
-      setMsgErrorConfPassword("Confirm Password is required");
+      setMsgErrorConfPassword("Confirm Password harus diisi");
     } else if (focusConfPassword === true && confPassword != password) {
       setIsErrorConfPassword(true);
-      setMsgErrorConfPassword("Confirm Password not match password");
+      setMsgErrorConfPassword("Confirm Password tidak sama");
     } else {
       setIsErrorConfPassword(false);
       setMsgErrorConfPassword("");
@@ -101,7 +101,7 @@ const FormRegister2 = ({
     focusConfPassword,
     setDisabled,
     isEmail,
-    isPassword
+    isPassword,
   ]);
 
   return (
@@ -117,101 +117,103 @@ const FormRegister2 = ({
         </Stack>
       </Box>
       <Box mx="25px" mt="10px">
-        <Box>
-          <FormControl isInvalid={isErrorEmail}>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Email
-            </FormLabel>
-            <Tooltip
-              label={msgErrorEmail}
-              placement="bottom-end"
-              bg="red.600"
-              isOpen={isErrorEmail}
+        <form onSubmit={handleRegister}>
+          <Box>
+            <FormControl isInvalid={isErrorEmail}>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Email
+              </FormLabel>
+              <Tooltip
+                label={msgErrorEmail}
+                placement="bottom-end"
+                bg="red.600"
+                isOpen={isErrorEmail}
+              >
+                <Input
+                  variant="flushed"
+                  type="email"
+                  h="35px"
+                  color="#FFFFFF"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  onBlur={() => {
+                    setFocusEmail(true);
+                  }}
+                />
+              </Tooltip>
+            </FormControl>
+          </Box>
+          <Box mt="15px">
+            <FormControl isInvalid={isErrorPassword}>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Password
+              </FormLabel>
+              <Tooltip
+                label={msgErrorPassword}
+                placement="bottom-end"
+                bg="red.600"
+                isOpen={isErrorPassword}
+              >
+                <Input
+                  variant="flushed"
+                  type="password"
+                  h="35px"
+                  color="#FFFFFF"
+                  placeholder="********"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  onBlur={() => {
+                    setFocusPassword(true);
+                  }}
+                />
+              </Tooltip>
+            </FormControl>
+          </Box>
+          <Box mt="15px">
+            <FormControl isInvalid={isErrorConfPassword}>
+              <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
+                Confirm Password
+              </FormLabel>
+              <Tooltip
+                label={msgErrorConfPassword}
+                placement="bottom-end"
+                bg="red.600"
+                isOpen={isErrorConfPassword}
+              >
+                <Input
+                  variant="flushed"
+                  type="password"
+                  h="35px"
+                  color="#FFFFFF"
+                  placeholder="********"
+                  value={confPassword}
+                  onChange={(e) => {
+                    setConfPassword(e.target.value);
+                  }}
+                  onBlur={() => {
+                    setFocusConfPassword(true);
+                  }}
+                />
+              </Tooltip>
+            </FormControl>
+          </Box>
+          <Box w="100%" mt="20px">
+            <Button
+              type="submit"
+              w="100%"
+              colorScheme="messenger"
+              disabled={disabled}
+              isLoading={isLoading}
             >
-              <Input
-                type="email"
-                h="35px"
-                bgColor="#D9D9D9"
-                borderRadius="15px"
-                placeholder="Email Address"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                onBlur={() => {
-                  setFocusEmail(true);
-                }}
-              />
-            </Tooltip>
-          </FormControl>
-        </Box>
-        <Box mt="15px">
-          <FormControl isInvalid={isErrorPassword}>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Password
-            </FormLabel>
-            <Tooltip
-              label={msgErrorPassword}
-              placement="bottom-end"
-              bg="red.600"
-              isOpen={isErrorPassword}
-            >
-              <Input
-                type="password"
-                h="35px"
-                bgColor="#D9D9D9"
-                borderRadius="15px"
-                placeholder="********"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                onBlur={() => {
-                  setFocusPassword(true);
-                }}
-              />
-            </Tooltip>
-          </FormControl>
-        </Box>
-        <Box mt="15px">
-          <FormControl isInvalid={isErrorConfPassword}>
-            <FormLabel fontSize="15px" color="#FFFFFF" fontWeight="400">
-              Confirm Password
-            </FormLabel>
-            <Tooltip
-              label={msgErrorConfPassword}
-              placement="bottom-end"
-              bg="red.600"
-              isOpen={isErrorConfPassword}
-            >
-              <Input
-                type="password"
-                h="35px"
-                bgColor="#D9D9D9"
-                borderRadius="15px"
-                placeholder="********"
-                value={confPassword}
-                onChange={(e) => {
-                  setConfPassword(e.target.value);
-                }}
-                onBlur={() => {
-                  setFocusConfPassword(true);
-                }}
-              />
-            </Tooltip>
-          </FormControl>
-        </Box>
-        <Box w="100%" mt="20px">
-          <Button
-            w="100%"
-            colorScheme="messenger"
-            disabled={disabled}
-            isLoading={isLoading}
-            onClick={handleRegister}
-          >
-            Register
-          </Button>
-        </Box>
+              Register
+            </Button>
+          </Box>
+        </form>
         <Stack direction="column" mt="15px" alignItems="center">
           <Text fontSize="13px" color="#FFFFFF">
             <Link
@@ -219,6 +221,7 @@ const FormRegister2 = ({
               onClick={() => {
                 setFormRegister(true);
               }}
+              d
               display="flex"
               alignItems="center"
               gap="1"
