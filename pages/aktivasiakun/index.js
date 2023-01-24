@@ -35,7 +35,7 @@ const index = () => {
           <Box position="absolute">
             <Box mb="50px" display="flex" justifyContent="center">
               <Stack direction="column" alignItems="center">
-                <Image src={logo} alt="logo" />
+                <Image src={logo} alt="logo" priority />
                 <Text fontSize="15px" color="#FFFFFF" fontWeight="bold">
                   Innovation Connect
                 </Text>

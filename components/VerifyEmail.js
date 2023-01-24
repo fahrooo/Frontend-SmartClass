@@ -14,6 +14,7 @@ import {
   PinInput,
   PinInputField,
   useToast,
+  LinkBox,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -37,7 +38,7 @@ const VeryfyEmail = () => {
     if (emailLocal) {
       setEmail(emailLocal);
     } else {
-      router.push("/sendverifyemail");
+      router.push("/");
     }
 
     if ((otp1 != "", otp2 != "", otp3 != "", otp4 != "")) {
@@ -142,7 +143,7 @@ const VeryfyEmail = () => {
             <Box>
               <Text fontSize="13px" color="#FFFFFF" mt="10px">
                 Belum mendapat email kode OTP?{" "}
-                <CountdownTimer totalSec={30 * 1000} />
+                <CountdownTimer totalSec={30 * 1000} email={email} />
               </Text>
             </Box>
             <Box>
@@ -154,6 +155,17 @@ const VeryfyEmail = () => {
               >
                 Kirim
               </Button>
+            </Box>
+            <Box>
+              <Link
+                fontSize="13px"
+                color="#FF9567"
+                onClick={() => {
+                  router.push("/updateemailverify");
+                }}
+              >
+                Perbarui email
+              </Link>
             </Box>
           </Stack>
         </form>
