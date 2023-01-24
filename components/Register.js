@@ -42,6 +42,8 @@ const Register = ({ setForm }) => {
       ) {
         setIsLoading(false);
         setDisabled(false);
+        localStorage.setItem("email", JSON.stringify([email]));
+        router.push("/verifyemail");
         toast({
           title: "Verifikasi Email!",
           description: data.data.message,
@@ -50,18 +52,16 @@ const Register = ({ setForm }) => {
           position: "top",
           isClosable: true,
         });
-        localStorage.setItem("email", JSON.stringify([email]));
-        router.push("/verifyemail");
       }
       if (
         data.data.status === 400 &&
-        data.data.message === "NIK sudah ada"
+        data.data.message === "NIK already exist"
       ) {
         setIsLoading(false);
         setDisabled(false);
         toast({
           title: "Registrasi Gagal!",
-          description: data.data.message,
+          description: "NIK sudah ada",
           status: "error",
           duration: 5000,
           position: "top",
@@ -70,25 +70,13 @@ const Register = ({ setForm }) => {
       }
       if (
         data.data.status === 400 &&
-        data.data.message === "Email sudah ada"
+        data.data.message === "Email already exist"
       ) {
         setIsLoading(false);
         setDisabled(false);
         toast({
           title: "Registrasi Gagal!",
-          description: data.data.message,
-          status: "error",
-          duration: 5000,
-          position: "top",
-          isClosable: true,
-        });
-      }
-      if (data.data.status === 400 && data.data.message === "Email tidak valid") {
-        setIsLoading(false);
-        setDisabled(false);
-        toast({
-          title: "Registrasi Gagal!",
-          description: data.data.message,
+          description: "Email sudah ada",
           status: "error",
           duration: 5000,
           position: "top",

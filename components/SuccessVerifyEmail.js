@@ -1,7 +1,10 @@
 import { Box, Stack, Text, Icon, Link, Image, Button } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React from "react";
 
 const SuccessVerifyEmail = () => {
+  const router = useRouter();
+
   return (
     <Box
       w="350px"
@@ -28,7 +31,14 @@ const SuccessVerifyEmail = () => {
           </Text>
         </Box>
         <Box>
-          <Button mt="10px" w="100%" colorScheme="messenger">
+          <Button
+            mt="10px"
+            w="100%"
+            colorScheme="messenger"
+            onClick={() => {
+              router.push("/");
+            }}
+          >
             Login
           </Button>
         </Box>

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   Button,
@@ -16,7 +18,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { TbSend } from "react-icons/tb";
+import CountdownTimer from "./countdownTimer";
 
 const VeryfyEmail = () => {
   const router = useRouter();
@@ -139,15 +141,8 @@ const VeryfyEmail = () => {
             </Box>
             <Box>
               <Text fontSize="13px" color="#FFFFFF" mt="10px">
-                Belum mendapat link aktivasi akun?{" "}
-                <Link
-                  color="#FF9567"
-                  onClick={() => {
-                    setForm(false);
-                  }}
-                >
-                  Kirim ulang
-                </Link>
+                Belum mendapat email kode OTP?{" "}
+                <CountdownTimer totalSec={30 * 1000} />
               </Text>
             </Box>
             <Box>
