@@ -31,7 +31,7 @@ const Register = ({ setForm }) => {
       const data = await axios.post("http://localhost:5000/register", {
         nama,
         nik,
-        unit,
+        id_unit: unit,
         email,
         password,
         confPassword,

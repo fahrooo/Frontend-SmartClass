@@ -6,6 +6,7 @@ import {
   FormLabel,
   Input,
   Link,
+  Select,
   Stack,
   Text,
   Tooltip,
@@ -138,12 +139,10 @@ const FormRegister1 = ({
                 bg="red.600"
                 isOpen={isErrorUnit}
               >
-                <Input
+                <Select
                   variant="flushed"
-                  type="text"
                   h="35px"
-                  color="#FFFFFF"
-                  placeholder="Unit"
+                  color={unit != "" ? "#FFFFFF" : "#718096"}
                   value={unit}
                   onChange={(e) => {
                     setUnit(e.target.value);
@@ -151,7 +150,20 @@ const FormRegister1 = ({
                   onBlur={() => {
                     setFocusUnit(true);
                   }}
-                />
+                >
+                  <option value="" style={{ color: "white", backgroundColor: "#4A5568", width: "200px" }} selected>
+                    Select Unit
+                  </option>
+                  <option value="1" style={{ color: "white", backgroundColor: "#4A5568" }}>
+                    Divisi Teknologi Informasi
+                  </option>
+                  <option value="2" style={{ color: "white", backgroundColor: "#4A5568" }}>
+                    Divisi Alat Berat
+                  </option>
+                  <option value="3" style={{ color: "white", backgroundColor: "#4A5568" }}>
+                    Divisi Kendaraan Khusus
+                  </option>
+                </Select>
               </Tooltip>
             </FormControl>
           </Box>
