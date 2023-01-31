@@ -12,6 +12,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import useRemoteUnits from "./hooks/useRemoteUnits";
 
 const FormRegister1 = ({
   setForm,
@@ -24,6 +25,7 @@ const FormRegister1 = ({
   unit,
 }) => {
   const [disabled, setDisabled] = useState(true);
+  const [disabledUnits, setDisabledUnits] = useState(true);
 
   const [focusNama, setFocusNama] = useState(false);
   const [focusNik, setFocusNik] = useState(false);
@@ -31,6 +33,8 @@ const FormRegister1 = ({
 
   const [isErrorNik, setIsErrorNik] = useState(false);
   const [msgErrorNik, setMsgErrorNik] = useState("");
+
+  const { data } = useRemoteUnits();
 
   useEffect(() => {
     if (nama != "" && nik != "" && unit != "" && nik.length >= 16) {
@@ -49,7 +53,13 @@ const FormRegister1 = ({
       setIsErrorNik(false);
       setMsgErrorNik("");
     }
-  }, [nama, nik, unit, focusNik]);
+
+    if (data?.status === 200) {
+      setDisabledUnits(false);
+    } else {
+      setDisabledUnits(true);
+    }
+  }, [nama, nik, unit, focusNik, data]);
 
   const isErrorNama = focusNama === true && nama === "";
   const isErrorUnit = focusUnit === true && unit === "";
@@ -150,19 +160,28 @@ const FormRegister1 = ({
                   onBlur={() => {
                     setFocusUnit(true);
                   }}
+                  disabled={disabledUnits}
                 >
-                  <option value="" style={{ color: "white", backgroundColor: "#4A5568", width: "200px" }} selected>
+                  <option
+                    value=""
+                    style={{
+                      color: "white",
+                      backgroundColor: "#4A5568",
+                      width: "200px",
+                    }}
+                    selected
+                  >
                     Select Unit
                   </option>
-                  <option value="1" style={{ color: "white", backgroundColor: "#4A5568" }}>
-                    Divisi Teknologi Informasi
-                  </option>
-                  <option value="2" style={{ color: "white", backgroundColor: "#4A5568" }}>
-                    Divisi Alat Berat
-                  </option>
-                  <option value="3" style={{ color: "white", backgroundColor: "#4A5568" }}>
-                    Divisi Kendaraan Khusus
-                  </option>
+                  {data?.data.map((unit, i) => (
+                    <option
+                      key={i}
+                      value={unit.id}
+                      style={{ color: "white", backgroundColor: "#4A5568" }}
+                    >
+                      {unit.nama}
+                    </option>
+                  ))}
                 </Select>
               </Tooltip>
             </FormControl>
