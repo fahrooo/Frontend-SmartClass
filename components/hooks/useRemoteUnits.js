@@ -5,7 +5,7 @@ const useRemoteUnits = () => {
   const url = "/units";
 
   const { data, ...others } = useQuery(
-    ["user"],
+    ["unit"],
     async () => await getFetchcer(url)
   );
 

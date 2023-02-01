@@ -3,7 +3,7 @@ import logo from "../../assets/images/logo.png";
 import background from "../../assets/images/kelas.png";
 import HeaderTitle from "@/components/HeaderTitle";
 import { Box, Stack, Text } from "@chakra-ui/react";
-import SendVeryfyEmail from "@/components/SendVerifyEmail";
+import UpdateEmailVerify from "@/components/UpdateEmailVerify";
 import Image from "next/image";
 
 const index = () => {
@@ -41,7 +41,7 @@ const index = () => {
                 </Text>
               </Stack>
             </Box>
-            <SendVeryfyEmail />
+            <UpdateEmailVerify />
           </Box>
         </Box>
       </main>

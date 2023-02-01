@@ -57,6 +57,9 @@ const Login = ({ setForm }) => {
     if (focusPassword === true && password === "") {
       setIsErrorPassword(true);
       setMsgErrorPassword("Password harus diisi");
+    } else {
+      setIsErrorPassword(false);
+      setMsgErrorPassword("");
     }
   }, [email, focusEmail, isEmail, focusPassword, password]);
 
@@ -171,7 +174,7 @@ const Login = ({ setForm }) => {
           position: "top",
           isClosable: true,
         });
-        console.log("Berhasil Login");
+        router.push("/dashboard");
       }
     } catch (error) {
       setDisabled(false);

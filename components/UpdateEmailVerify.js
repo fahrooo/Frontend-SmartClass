@@ -20,7 +20,7 @@ import React, { useEffect, useState } from "react";
 import { GrMail } from "react-icons/gr";
 import validator from "validator";
 
-const SendVeryfyEmail = () => {
+const UpdateEmailVerify = () => {
   const router = useRouter();
 
   const [oldEmail, setOldEmail] = useState("");
@@ -170,4 +170,4 @@ const SendVeryfyEmail = () => {
   );
 };
 
-export default SendVeryfyEmail;
+export default UpdateEmailVerify;

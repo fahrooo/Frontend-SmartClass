@@ -1,6 +1,8 @@
-import { Box, Stack, Text, Icon, Link, Image, Button } from "@chakra-ui/react";
+import { Box, Stack, Text, Icon, Link, Button } from "@chakra-ui/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
+import success from "../assets/images/success.png";
 
 const SuccessVerifyEmail = () => {
   const router = useRouter();
@@ -15,10 +17,7 @@ const SuccessVerifyEmail = () => {
     >
       <Stack direction="column" alignItems="center">
         <Box w="100px" h="100px">
-          <Image
-            src="https://www.freeiconspng.com/uploads/success-icon-10.png"
-            alt="success"
-          />
+          <Image src={success} alt="success" />
         </Box>
         <Box>
           <Text fontSize="27px" color="#FFFFFF" fontWeight="700">
