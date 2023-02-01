@@ -169,7 +169,6 @@ const FormRegister1 = ({
                       backgroundColor: "#4A5568",
                       width: "200px",
                     }}
-                    selected
                   >
                     Select Unit
                   </option>

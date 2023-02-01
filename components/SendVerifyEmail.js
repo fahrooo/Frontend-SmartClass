@@ -14,6 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { GrMail } from "react-icons/gr";
@@ -33,7 +34,7 @@ const SendVeryfyEmail = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const oldemail = JSON.parse(localStorage.getItem("email"));
+    const oldemail = Cookies.get("email");
     if (oldemail) {
       setOldEmail(oldemail);
     } else {
@@ -76,7 +77,7 @@ const SendVeryfyEmail = () => {
         data.data.status === 200 &&
         data.data.message === "Email updated successfuly"
       ) {
-        localStorage.setItem("email", JSON.stringify([newEmail]));
+        Cookies.set("email", newEmail);;
         router.push("/verifyemail");
         toast({
           title: "Verifikasi Email!",

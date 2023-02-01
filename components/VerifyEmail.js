@@ -17,6 +17,7 @@ import {
   LinkBox,
 } from "@chakra-ui/react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CountdownTimer from "./countdownTimer";
@@ -34,7 +35,7 @@ const VeryfyEmail = () => {
   const [otp4, setOtp4] = useState("");
 
   useEffect(() => {
-    const emailLocal = JSON.parse(localStorage.getItem("email"));
+    const emailLocal = Cookies.get("email");
     if (emailLocal) {
       setEmail(emailLocal);
     } else {
