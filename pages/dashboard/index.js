@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import useRemoteUnits from "@/components/hooks/useRemoteUnits";
 import { Box, Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -9,12 +10,15 @@ const index = () => {
   const router = useRouter();
   const toast = useToast();
 
+  const { data } = useRemoteUnits();
+  console.log(data);
+
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
       const result = await axios.delete("http://localhost:5000/logout");
       console.log(result.data.status, result.data.message);
-      
+
       if (
         result.data.status === 200 &&
         result.data.message === "Clear Token Successful"
@@ -44,6 +48,13 @@ const index = () => {
       <Button colorScheme={"red"} onClick={handleLogout}>
         Logout
       </Button>
+      {data?.data.map((unit, i) => (
+        <Box
+          key={i}
+        >
+          {unit.nama}
+        </Box>
+      ))}
     </Box>
   );
 };

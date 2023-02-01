@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getFetchcer } from "@/libs/axios";
 
 const useRemoteUnits = () => {
-  const url = "/units";
+  const url = "units";
 
   const { data, ...others } = useQuery(
     ["unit"],

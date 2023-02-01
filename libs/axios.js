@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://localhost:5000/",
 });
 
 axios.defaults.withCredentials = true;
@@ -11,6 +11,8 @@ axiosInstance.interceptors.request.use(async (response) => {
     const createToken = await axios
       .get(response.baseURL + `token`)
       .then((res) => res.data);
+
+    console.log(createToken);
 
     response.headers = {
       Authorization: `Bearer ${createToken.accessToken}`,
