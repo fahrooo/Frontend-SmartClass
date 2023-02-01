@@ -64,7 +64,7 @@ const VeryfyEmail = () => {
             res.data.status === 200 &&
             res.data.message === "Aktivasi Berhasil"
           ) {
-            localStorage.removeItem("email");
+            Cookies.remove("email");
             toast({
               title: "Aktivasi Akun Berhasil!",
               description: "Silahkan melakukan login",
