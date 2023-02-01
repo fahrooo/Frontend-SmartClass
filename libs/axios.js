@@ -4,6 +4,21 @@ const axiosInstance = axios.create({
   baseURL: "http://localhost:5000",
 });
 
+axios.defaults.withCredentials = true;
+
+axiosInstance.interceptors.request.use(async (response) => {
+  if (response) {
+    const createToken = await axios
+      .get(response.baseURL + `token`)
+      .then((res) => res.data);
+
+    response.headers = {
+      Authorization: `Bearer ${createToken.accessToken}`,
+    };
+  }
+  return response;
+});
+
 export const getFetchcer = (resource, init) =>
   axiosInstance
     .get(resource, init)
