@@ -165,6 +165,7 @@ const Login = ({ setForm }) => {
         Cookies.set("email", result.data.data?.email, { expires: 1 });
         Cookies.set("unit", result.data.data?.unit, { expires: 1 });
         Cookies.set("role", result.data.data?.role, { expires: 1 });
+        Cookies.set("isLogin", true, { expires: 1 });
         setIsLoading(false);
         setDisabled(false);
         toast({

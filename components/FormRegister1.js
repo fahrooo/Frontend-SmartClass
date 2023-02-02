@@ -36,6 +36,8 @@ const FormRegister1 = ({
 
   const { data } = useRemoteUnits();
 
+  console.log(data);
+
   useEffect(() => {
     if (nama != "" && nik != "" && unit != "" && nik.length >= 16) {
       setDisabled(false);

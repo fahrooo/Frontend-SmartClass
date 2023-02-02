@@ -27,6 +27,7 @@ const index = () => {
         Cookies.remove("email");
         Cookies.remove("unit");
         Cookies.remove("role");
+        Cookies.remove("isLogin");
 
         toast({
           title: "Logout Berhasil!",
@@ -49,11 +50,7 @@ const index = () => {
         Logout
       </Button>
       {data?.data.map((unit, i) => (
-        <Box
-          key={i}
-        >
-          {unit.nama}
-        </Box>
+        <Box key={i}>{unit.nama}</Box>
       ))}
     </Box>
   );

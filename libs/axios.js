@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5000/",
@@ -6,20 +7,23 @@ const axiosInstance = axios.create({
 
 axios.defaults.withCredentials = true;
 
-axiosInstance.interceptors.request.use(async (response) => {
-  if (response) {
-    const createToken = await axios
-      .get(response.baseURL + `token`)
-      .then((res) => res.data);
+const isLogin = Cookies.get("isLogin");
+if (isLogin) {
+  axiosInstance.interceptors.request.use(async (response) => {
+    if (response) {
+      const createToken = await axios
+        .get(response.baseURL + `token`)
+        .then((res) => res.data);
 
-    console.log(createToken);
+      console.log(createToken);
 
-    response.headers = {
-      Authorization: `Bearer ${createToken.accessToken}`,
-    };
-  }
-  return response;
-});
+      response.headers = {
+        Authorization: `Bearer ${createToken.accessToken}`,
+      };
+    }
+    return response;
+  });
+}
 
 export const getFetchcer = (resource, init) =>
   axiosInstance
