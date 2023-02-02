@@ -36,6 +36,7 @@ const VeryfyEmail = () => {
 
   useEffect(() => {
     const emailLocal = Cookies.get("email");
+
     if (emailLocal) {
       setEmail(emailLocal);
     } else {
@@ -54,6 +55,9 @@ const VeryfyEmail = () => {
   const handleAktivasiAkun = async (e) => {
     e.preventDefault();
     try {
+      const forgot = Cookies.get("_forgot");
+      const verified = Cookies.get("_verified");
+      console.log(forgot, verified);
       axios
         .post("http://localhost:5000/verifyemail", {
           email,
@@ -64,16 +68,40 @@ const VeryfyEmail = () => {
             res.data.status === 200 &&
             res.data.message === "Aktivasi Berhasil"
           ) {
-            Cookies.remove("email");
-            toast({
-              title: "Aktivasi Akun Berhasil!",
-              description: "Silahkan melakukan login",
-              status: "success",
-              duration: 5000,
-              position: "top",
-              isClosable: true,
-            });
-            router.push("/aktivasiakun");
+            if (forgot && verified) {
+              toast({
+                title: "Aktivasi Akun Berhasil!",
+                description: "Silahkan perbarui password",
+                status: "success",
+                duration: 5000,
+                position: "top",
+                isClosable: true,
+              });
+              router.push("/updatepassword");
+            } else if (forgot) {
+              toast({
+                title: "Verifikasi Email Berhasil!",
+                description: "Silahkan perbarui password",
+                status: "success",
+                duration: 5000,
+                position: "top",
+                isClosable: true,
+              });
+              router.push("/updatepassword");
+            } else {
+              Cookies.remove("email");
+              Cookies.remove("_verified");
+              Cookies.remove("_forgot");
+              toast({
+                title: "Aktivasi Akun Berhasil!",
+                description: "Silahkan melakukan login",
+                status: "success",
+                duration: 5000,
+                position: "top",
+                isClosable: true,
+              });
+              router.push("/aktivasiakun");
+            }
           } else {
             toast({
               title: "Aktivasi Akun Gagal!",

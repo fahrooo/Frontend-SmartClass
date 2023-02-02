@@ -37,6 +37,11 @@ const Login = ({ setForm }) => {
   const isEmail = validator.isEmail(email);
 
   useEffect(() => {
+    Cookies.remove("email");
+    Cookies.remove("_verified");
+    Cookies.remove("_forgot");
+    Cookies.remove("isLogin");
+
     if (email != "" && isEmail == true && password != "") {
       setDisabled(false);
     } else {
@@ -264,7 +269,13 @@ const Login = ({ setForm }) => {
           </Box>
           <Box mt="20px" display="flex" justifyContent="end">
             <Text fontSize="13px" color="#FFFFFF">
-              <Link href="#">Lupa Password?</Link>
+              <Link
+                onClick={() => {
+                  router.push("/forgotpassword");
+                }}
+              >
+                Lupa Password?
+              </Link>
             </Text>
           </Box>
           <Box w="100%" mt="20px">
