@@ -13,7 +13,7 @@ const DashboardSidebarItem = ({ label, icon }) => {
       justifyContent="center"
       alignItems="center"
     >
-      <Text fontSize="10px" fontWeight="bold">
+      <Text fontSize="12px" fontWeight="bold">
         {label}
       </Text>
       <Icon as={icon} boxSize={8} mt="5px" />
