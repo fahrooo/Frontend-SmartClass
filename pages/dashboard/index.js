@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import DashboardLayout from "@/components/Dashboard/DashboardLayout";
 import useRemoteUnits from "@/components/hooks/useRemoteUnits";
 import { Box, Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
@@ -45,14 +46,15 @@ const index = () => {
   };
 
   return (
-    <Box>
-      <Button colorScheme={"red"} onClick={handleLogout}>
-        Logout
-      </Button>
-      {data?.data.map((unit, i) => (
-        <Box key={i}>{unit.nama}</Box>
-      ))}
-    </Box>
+    <DashboardLayout />
+    // <Box>
+    //   <Button colorScheme={"red"} onClick={handleLogout}>
+    //     Logout
+    //   </Button>
+    //   {data?.data.map((unit, i) => (
+    //     <Box key={i}>{unit.nama}</Box>
+    //   ))}
+    // </Box>
   );
 };
 
