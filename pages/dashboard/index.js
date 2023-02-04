@@ -72,6 +72,7 @@ const Dashboard = () => {
   return (
     <Flex
       maxH={{ base: "max-content", md: "100vh" }}
+      minH={{ base: "max-content", md: "100vh" }}
       bgGradient="linear(to-bl, #5B7688, #F3D5C1 80%)"
       p={{ base: "10px", md: "35px" }}
       gap="40px"
@@ -89,29 +90,21 @@ const Dashboard = () => {
           flexDirection={{ base: "column-reverse", md: "row" }}
           w="100%"
           h={{ base: "max-content", md: "100%" }}
-          border="1px"
-          borderColor="#FFFF45"
           gap={4}
         >
           <Box
             w={{ base: "100%", md: "70%" }}
             h={{ base: "max-content", md: "100%" }}
-            border="1px"
-            borderColor="#FFFFFF"
           >
             <Box
               display={{ base: "none", md: "flex" }}
               w="100%"
               h="15%"
-              border="1px"
-              borderColor="#FFFFFF"
               gap={4}
             >
               <Box
                 w={{ base: "100%", md: "60%", xl: "75%" }}
                 h="100%"
-                border="1px"
-                borderColor="blue.300"
                 display="flex"
                 flexDirection="column"
                 justifyContent="space-between"
@@ -120,13 +113,11 @@ const Dashboard = () => {
                 <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
                   HAI ANDIS
                 </Text>
-                <Box bgColor="#393D43" h={6} w="100%" borderRadius="15px"></Box>
+                <Box bgColor="#393D43" h={8} w="100%" borderRadius="15px"></Box>
               </Box>
               <Box
                 w={{ base: "100%", md: "40%", xl: "25%" }}
                 h="100%"
-                border="1px"
-                borderColor="red.300"
                 py={2}
               >
                 <Box
@@ -150,8 +141,6 @@ const Dashboard = () => {
             <Box
               w="100%"
               h={{ base: "max-content", md: "85%", xl: "85%" }}
-              border="1px"
-              borderColor="#FFFFFF"
               py={2}
               overflowY="auto"
             >
@@ -202,13 +191,7 @@ const Dashboard = () => {
               </Grid>
             </Box>
           </Box>
-          <Box
-            w={{ base: "100%", md: "30%" }}
-            h="100%"
-            border="1px"
-            borderColor="#FFFFFF"
-            py={2}
-          >
+          <Box w={{ base: "100%", md: "30%" }} h="100%" py={2}>
             <Box
               bgColor="#7A95A9"
               w="100%"
@@ -242,19 +225,10 @@ const Dashboard = () => {
               </Center>
             </Box>
           </Box>
-          <Box
-            display={{ base: "block", md: "none" }}
-            w="100%"
-            h="15%"
-            border="1px"
-            borderColor="#FFFFFF"
-            gap={4}
-          >
+          <Box display={{ base: "block", md: "none" }} w="100%" h="15%" gap={4}>
             <Box
               w={{ base: "100%", md: "60%", xl: "75%" }}
               h="100%"
-              border="1px"
-              borderColor="blue.300"
               display="flex"
               flexDirection="column"
               justifyContent="space-between"
@@ -263,13 +237,11 @@ const Dashboard = () => {
               <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
                 HAI ANDIS
               </Text>
-              <Box bgColor="#393D43" h={6} w="100%" borderRadius="15px"></Box>
+              <Box bgColor="#393D43" h={8} w="100%" borderRadius="15px" mt={2}></Box>
             </Box>
             <Box
               w={{ base: "100%", md: "40%", xl: "25%" }}
               h="100%"
-              border="1px"
-              borderColor="red.300"
               py={2}
             >
               <Box

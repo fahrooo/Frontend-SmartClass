@@ -30,8 +30,6 @@ const DashboardSidebar = () => {
       </Center>
       <VStack mt="30px" textAlign="center" gap="5px">
         <DashboardSidebarItem label="Dashboard" icon={RxDashboard} />
-        <DashboardSidebarItem label="Dashboard" icon={RxDashboard} />
-        <DashboardSidebarItem label="Dashboard" icon={RxDashboard} />
       </VStack>
     </Box>
   );
