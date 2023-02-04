@@ -71,7 +71,7 @@ const Dashboard = () => {
 
   return (
     <Flex
-      minH={{ base: "max-content", md: "100vh" }}
+      maxH={{ base: "max-content", md: "100vh" }}
       bgGradient="linear(to-bl, #5B7688, #F3D5C1 80%)"
       p={{ base: "10px", md: "35px" }}
       gap="40px"
@@ -85,7 +85,8 @@ const Dashboard = () => {
         p={{ base: "15px", md: "30px" }}
       >
         <Box
-          display={{ base: "block", md: "flex" }}
+          display="flex"
+          flexDirection={{ base: "column-reverse", md: "row" }}
           w="100%"
           h={{ base: "max-content", md: "100%" }}
           border="1px"
@@ -99,7 +100,7 @@ const Dashboard = () => {
             borderColor="#FFFFFF"
           >
             <Box
-              display={{ base: "block", md: "flex" }}
+              display={{ base: "none", md: "flex" }}
               w="100%"
               h="15%"
               border="1px"
@@ -152,6 +153,7 @@ const Dashboard = () => {
               border="1px"
               borderColor="#FFFFFF"
               py={2}
+              overflowY="auto"
             >
               <Grid
                 templateColumns={{
@@ -193,7 +195,7 @@ const Dashboard = () => {
                 />
                 <DashboardDeviceItem
                   bgColor="#EEEAFF"
-                  colSpan={2}
+                  colSpan={1}
                   image={speaker}
                   label="Speaker"
                 />
@@ -217,10 +219,10 @@ const Dashboard = () => {
               <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
                 UNIT TI
               </Text>
-              <Center py={7}>
+              <Center py={5}>
                 <Image src={cctv} alt="cctv" style={{ width: "90%" }} />
               </Center>
-              <Center>
+              <Center py={2}>
                 <SimpleGrid
                   columns={{ base: 3, md: 2, xl: 3 }}
                   spacingY={{ base: 5, md: 5, xl: 4 }}
@@ -238,6 +240,54 @@ const Dashboard = () => {
                   <DashboardSidebarItem label="Kelas F" icon={RxDashboard} />
                 </SimpleGrid>
               </Center>
+            </Box>
+          </Box>
+          <Box
+            display={{ base: "block", md: "none" }}
+            w="100%"
+            h="15%"
+            border="1px"
+            borderColor="#FFFFFF"
+            gap={4}
+          >
+            <Box
+              w={{ base: "100%", md: "60%", xl: "75%" }}
+              h="100%"
+              border="1px"
+              borderColor="blue.300"
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+              py={2}
+            >
+              <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
+                HAI ANDIS
+              </Text>
+              <Box bgColor="#393D43" h={6} w="100%" borderRadius="15px"></Box>
+            </Box>
+            <Box
+              w={{ base: "100%", md: "40%", xl: "25%" }}
+              h="100%"
+              border="1px"
+              borderColor="red.300"
+              py={2}
+            >
+              <Box
+                bgColor="#393D43"
+                h="100%"
+                borderRadius="30px"
+                textAlign="center"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+              >
+                <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
+                  8:30 PM
+                </Text>
+                <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
+                  03 Januari 2023
+                </Text>
+              </Box>
             </Box>
           </Box>
         </Box>

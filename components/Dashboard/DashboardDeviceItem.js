@@ -7,7 +7,7 @@ const DashboardDeviceItem = ({ bgColor, colSpan, image, label }) => {
     <GridItem
       colSpan={colSpan}
       w="100%"
-      h={{ base: "36", md: "40", xl: "36" }}
+      h={{ base: "40", md: "44", xl: "44" }}
       bgColor={bgColor}
       borderRadius="30px"
       p={4}
@@ -19,10 +19,14 @@ const DashboardDeviceItem = ({ bgColor, colSpan, image, label }) => {
         <Switch colorScheme="purple" />
       </Box>
       <Center h="70%">
-        <Image src={image} alt="door" style={{ width: "50%" }} />
+        <Image src={image} alt="door" style={{ width: "70%" }} />
       </Center>
       <Center>
-        <Text fontSize="15px" fontWeight="500">
+        <Text
+          fontSize="15px"
+          fontWeight="600"
+          mt={{ base: "1", md: "1.5", xl: "2" }}
+        >
           {label}
         </Text>
       </Center>
