@@ -1,10 +1,13 @@
 import { Box, Text, Icon } from "@chakra-ui/react";
 import React from "react";
 
-const DashboardSidebarItem = ({ label, icon }) => {
+const DashboardSidebarItem = ({ item, pathname }) => {
+  const isActive = item.path === pathname ? true : false;
+
   return (
     <Box
-      bgColor="#F0FBFF"
+      bgColor={isActive ? "#F0FBFF" : "#32383D"}
+      color={isActive ? "black" : "white"}
       w="80px"
       h="80px"
       borderRadius="25px"
@@ -14,9 +17,9 @@ const DashboardSidebarItem = ({ label, icon }) => {
       alignItems="center"
     >
       <Text fontSize="12px" fontWeight="bold">
-        {label}
+        {item.name}
       </Text>
-      <Icon as={icon} boxSize={8} mt="5px" />
+      <Icon as={item.icon} boxSize={8} mt="5px" />
     </Box>
   );
 };

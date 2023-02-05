@@ -2,10 +2,12 @@ import { Box, Center, Text, VStack, Icon } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 import logo from "../../assets/images/logo.png";
-import { RxDashboard } from "react-icons/rx";
 import DashboardSidebarItem from "./DashboardSidebarItem";
+import { useRouter } from "next/router";
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ({ items }) => {
+  // console.log(items);
+  const { pathname } = useRouter();
   return (
     <Box
       as="aside"
@@ -29,7 +31,9 @@ const DashboardSidebar = () => {
         </Text>
       </Center>
       <VStack mt="30px" textAlign="center" gap="5px">
-        <DashboardSidebarItem label="Dashboard" icon={RxDashboard} />
+        {items?.map((item, index) => (
+          <DashboardSidebarItem key={index} item={item} pathname={pathname} />
+        ))}
       </VStack>
     </Box>
   );

@@ -1,8 +1,9 @@
-import { Box, Center, GridItem, Switch, Text } from "@chakra-ui/react";
+import { Badge, Box, Center, GridItem, Switch, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const DashboardDeviceItem = ({ bgColor, colSpan, image, label }) => {
+  const [power, setPower] = useState(false);
   return (
     <GridItem
       colSpan={colSpan}
@@ -14,9 +15,15 @@ const DashboardDeviceItem = ({ bgColor, colSpan, image, label }) => {
     >
       <Box display="flex" justifyContent="space-between">
         <Text fontSize="15px" fontWeight="500">
-          ON
+          <Badge colorScheme={power ? "green" : "red"} borderRadius="10px">
+            {power ? "ON" : "OFF"}
+          </Badge>
         </Text>
-        <Switch colorScheme="purple" />
+        <Switch
+          colorScheme="purple"
+          isChecked={power}
+          onChange={() => setPower(!power)}
+        />
       </Box>
       <Center h="70%">
         <Image src={image} alt="door" style={{ width: "70%" }} />

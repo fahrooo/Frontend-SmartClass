@@ -9,66 +9,52 @@ import {
   Center,
   Flex,
   Grid,
-  GridItem,
-  HStack,
   SimpleGrid,
-  Spacer,
-  Switch,
   Text,
   useToast,
-  VStack,
+  Icon,
+  useFocusEffect,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-import { RxDashboard } from "react-icons/rx";
+import React, { useEffect, useState } from "react";
 import cctv from "../../assets/images/cctv.png";
 import door from "../../assets/images/door.png";
 import lamp from "../../assets/images/lamp.png";
 import ac from "../../assets/images/ac.png";
 import tv from "../../assets/images/tv.png";
 import speaker from "../../assets/images/speaker.png";
+import { IoMdNotifications } from "react-icons/io";
+import { SiGoogleclassroom } from "react-icons/si";
+import DashboardKelasItem from "@/components/Dashboard/DashboardKelasItem";
+import { formatDate } from "node-format-date";
+import generateSidebarItems from "@/utils/sidebar";
 
 const Dashboard = () => {
   const router = useRouter();
   const toast = useToast();
 
-  const { data } = useRemoteUnits();
-  console.log(data);
+  const [now, setNow] = useState(new Date());
+  const getDate = formatDate(now);
+  const getHours = now.getHours();
+  const getMinutes = now.getMinutes();
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    try {
-      const result = await axios.delete("http://localhost:5000/logout");
-      console.log(result.data.status, result.data.message);
+  const [date, setDate] = useState("");
+  const [hours, setHours] = useState("");
+  const [minutes, setMinutes] = useState("");
 
-      if (
-        result.data.status === 200 &&
-        result.data.message === "Clear Token Successful"
-      ) {
-        Cookies.remove("nama");
-        Cookies.remove("email");
-        Cookies.remove("unit");
-        Cookies.remove("role");
-        Cookies.remove("isLogin");
+  useEffect(() => {
+    setInterval(() => {
+      setNow(new Date(), 3000);
+    });
+    setDate(getDate);
+    setHours(getHours);
+    setMinutes(getMinutes);
+  }, [getDate, getHours, getMinutes]);
 
-        toast({
-          title: "Logout Berhasil!",
-          status: "success",
-          duration: 5000,
-          position: "top",
-          isClosable: true,
-        });
-
-        router.push("/");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  let sidebarItems = generateSidebarItems();
   return (
     <Flex
       maxH={{ base: "max-content", md: "100vh" }}
@@ -77,7 +63,7 @@ const Dashboard = () => {
       p={{ base: "10px", md: "35px" }}
       gap="40px"
     >
-      <DashboardSidebar />
+      <DashboardSidebar items={sidebarItems} />
       <Box
         bgColor="#262A2D"
         w="100%"
@@ -113,13 +99,20 @@ const Dashboard = () => {
                 <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
                   HAI ANDIS
                 </Text>
-                <Box bgColor="#393D43" h={8} w="100%" borderRadius="15px"></Box>
+                <Box
+                  bgColor="#393D43"
+                  h={6}
+                  w="100%"
+                  borderRadius="15px"
+                  display="flex"
+                  justifyContent="end"
+                  alignItems="center"
+                  px={2}
+                >
+                  <Icon as={IoMdNotifications} color="white" boxSize={"5"} />
+                </Box>
               </Box>
-              <Box
-                w={{ base: "100%", md: "40%", xl: "25%" }}
-                h="100%"
-                py={2}
-              >
+              <Box w={{ base: "100%", md: "40%", xl: "25%" }} h="100%" py={2}>
                 <Box
                   bgColor="#393D43"
                   h="100%"
@@ -130,10 +123,10 @@ const Dashboard = () => {
                   justifyContent="center"
                 >
                   <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
-                    8:30 PM
+                    {hours}:{minutes} {hours >= 12 ? "PM" : "AM"}
                   </Text>
                   <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
-                    03 Januari 2023
+                    {date}
                   </Text>
                 </Box>
               </Box>
@@ -205,22 +198,47 @@ const Dashboard = () => {
               <Center py={5}>
                 <Image src={cctv} alt="cctv" style={{ width: "90%" }} />
               </Center>
-              <Center py={2}>
+              <Center>
                 <SimpleGrid
                   columns={{ base: 3, md: 2, xl: 3 }}
-                  spacingY={{ base: 5, md: 5, xl: 4 }}
-                  spacingX={{ base: 5, md: 10, xl: 10 }}
+                  spacingY={{ base: 5, md: 4, xl: 4 }}
+                  spacingX={{ base: 5, md: 6, xl: 8 }}
                   overflowY="auto"
-                  h={{ base: "180px", md: "280px", xl: "180px" }}
+                  h={{ base: "195px", md: "280px", xl: "185px" }}
+                  py={2}
                 >
-                  <DashboardSidebarItem label="Kelas A" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas B" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas C" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas D" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas E" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas F" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas E" icon={RxDashboard} />
-                  <DashboardSidebarItem label="Kelas F" icon={RxDashboard} />
+                  <DashboardKelasItem
+                    label="Kelas A"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas B"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas C"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas D"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas E"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas F"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas E"
+                    icon={SiGoogleclassroom}
+                  />
+                  <DashboardKelasItem
+                    label="Kelas F"
+                    icon={SiGoogleclassroom}
+                  />
                 </SimpleGrid>
               </Center>
             </Box>
@@ -237,13 +255,21 @@ const Dashboard = () => {
               <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
                 HAI ANDIS
               </Text>
-              <Box bgColor="#393D43" h={8} w="100%" borderRadius="15px" mt={2}></Box>
+              <Box
+                bgColor="#393D43"
+                h={6}
+                w="100%"
+                borderRadius="15px"
+                display="flex"
+                justifyContent="end"
+                alignItems="center"
+                px={2}
+                mt={2}
+              >
+                <Icon as={IoMdNotifications} color="white" boxSize={"5"} />
+              </Box>
             </Box>
-            <Box
-              w={{ base: "100%", md: "40%", xl: "25%" }}
-              h="100%"
-              py={2}
-            >
+            <Box w={{ base: "100%", md: "40%", xl: "25%" }} h="100%" py={2}>
               <Box
                 bgColor="#393D43"
                 h="100%"
@@ -254,10 +280,10 @@ const Dashboard = () => {
                 justifyContent="center"
               >
                 <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
-                  8:30 PM
+                  {hours}:{minutes} {hours >= 12 ? "PM" : "AM"}
                 </Text>
                 <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
-                  03 Januari 2023
+                  {date}
                 </Text>
               </Box>
             </Box>

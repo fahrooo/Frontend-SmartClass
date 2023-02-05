@@ -1,9 +1,12 @@
+import generateSidebarItems from "@/utils/sidebar";
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import DashboardMain from "./DashboardMain";
 import DashboardSidebar from "./DashboardSidebar";
 
 const DashboardLayout = ({ children }) => {
+  let sidebarItems = generateSidebarItems();
+  console.log(sidebarItems);
   return (
     <Flex
       minH="100vh"
@@ -11,7 +14,7 @@ const DashboardLayout = ({ children }) => {
       p="35px"
       gap="40px"
     >
-      <DashboardSidebar />
+      <DashboardSidebar items={sidebarItems} />
       <DashboardMain>{children}</DashboardMain>
     </Flex>
   );
