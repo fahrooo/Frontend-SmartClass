@@ -13,7 +13,6 @@ const index = () => {
   const emailVerify = useActionGlobal((state) => state.email);
   return (
     <>
-      <HeaderTitle />
       <main>
         <Box
           w="100%"

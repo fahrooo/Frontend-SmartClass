@@ -7,7 +7,6 @@ import background from "../assets/images/kelas.png";
 import Login from "@/components/Login.js";
 import Register from "@/components/Register";
 import { Toast } from "@chakra-ui/react";
-import HeaderTitle from "@/components/HeaderTitle";
 
 export default function Home() {
   const [lampu, setLampu] = useState(true);
@@ -29,7 +28,6 @@ export default function Home() {
   const url = `url('${background.src}')`;
   return (
     <>
-      <HeaderTitle />
       <main>
         <Box
           w="100%"

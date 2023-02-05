@@ -10,7 +10,6 @@ const index = () => {
   const url = `url('${background.src}')`;
   return (
     <>
-      <HeaderTitle />
       <main>
         <Box
           w="100%"
