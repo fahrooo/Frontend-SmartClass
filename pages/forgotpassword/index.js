@@ -6,7 +6,7 @@ import logo from "../../assets/images/logo.png";
 import background from "../../assets/images/kelas.png";
 import ForgotPassword from "@/components/ForgotPassword";
 
-const index = () => {
+const forgotPassword = () => {
   const url = `url('${background.src}')`;
   return (
     <>
@@ -48,4 +48,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default forgotPassword;

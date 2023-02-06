@@ -6,7 +6,7 @@ import { Box, Stack, Text } from "@chakra-ui/react";
 import UpdateEmailVerify from "@/components/UpdateEmailVerify";
 import Image from "next/image";
 
-const index = () => {
+const updateEmailVerify = () => {
   const url = `url('${background.src}')`;
   return (
     <>
@@ -48,4 +48,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default updateEmailVerify;

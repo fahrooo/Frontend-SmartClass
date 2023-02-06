@@ -20,7 +20,7 @@ import Cookies from "js-cookie";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import cctv from "../../assets/images/cctv.png";
+import cctv from "../../assets/images/cctv.jpg";
 import door from "../../assets/images/door.png";
 import lamp from "../../assets/images/lamp.png";
 import ac from "../../assets/images/ac.png";
@@ -206,8 +206,11 @@ const Dashboard = () => {
                 UNIT TI
               </Text>
               <Center py={5}>
-                <Image src={cctv} alt="cctv" style={{ width: "90%" }} />
+                <Image src={cctv} alt="cctv" style={{ borderRadius: "30px" }} />
               </Center>
+              <Text fontSize="20px" color="white" fontWeight="700" mb={4}>
+                8 Kelas
+              </Text>
               <Center>
                 <SimpleGrid
                   columns={{ base: 3, md: 2, xl: 3 }}

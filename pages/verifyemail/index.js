@@ -8,7 +8,7 @@ import background from "../../assets/images/kelas.png";
 import VerifyEmail from "@/components/VerifyEmail";
 import useActionGlobal from "@/store/UseActionGlobal";
 
-const index = () => {
+const verifyEmail = () => {
   const url = `url('${background.src}')`;
   const emailVerify = useActionGlobal((state) => state.email);
   return (
@@ -51,4 +51,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default verifyEmail;
