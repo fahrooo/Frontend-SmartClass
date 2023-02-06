@@ -10,8 +10,8 @@ function generateSidebarItems() {
       icon: RxDashboard,
     },
     {
-      name: "User",
-      path: "/user",
+      name: "Users",
+      path: "/users",
       icon: MdOutlinePeopleAlt,
     },
     {

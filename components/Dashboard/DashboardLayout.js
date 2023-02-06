@@ -6,12 +6,12 @@ import DashboardSidebar from "./DashboardSidebar";
 
 const DashboardLayout = ({ children }) => {
   let sidebarItems = generateSidebarItems();
-  console.log(sidebarItems);
   return (
     <Flex
-      minH="100vh"
+      maxH={{ base: "100vh", md: "100vh" }}
+      minH={{ base: "100vh", md: "100vh" }}
       bgGradient="linear(to-bl, #5B7688, #F3D5C1 80%)"
-      p="35px"
+      p={{ base: "10px", md: "35px" }}
       gap="40px"
     >
       <DashboardSidebar items={sidebarItems} />

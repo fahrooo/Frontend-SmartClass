@@ -123,7 +123,7 @@ const Dashboard = () => {
                   justifyContent="center"
                 >
                   <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
-                    {hours}:{minutes} {hours >= 12 ? "PM" : "AM"}
+                    {hours}:{minutes < 10 ? "0" + minutes : minutes} {hours >= 12 ? "PM" : "AM"}
                   </Text>
                   <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
                     {date}
@@ -293,7 +293,7 @@ const Dashboard = () => {
                 justifyContent="center"
               >
                 <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
-                  {hours}:{minutes} {hours >= 12 ? "PM" : "AM"}
+                  {hours}:{minutes < 10 ? "0" + minutes : minutes} {hours >= 12 ? "PM" : "AM"}
                 </Text>
                 <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
                   {date}

@@ -4,9 +4,17 @@ import DashboardNavbar from "./DashboardNavbar";
 
 const DashboardMain = ({ children }) => {
   return (
-    <Box bgColor="#262A2D" width="100%" borderRadius="55px" p="30px">
+    <Box
+      bgColor="#262A2D"
+      w="100%"
+      minH={{ base: "max-content", md: "100%" }}
+      borderRadius="55px"
+      p={{ base: "15px", md: "30px" }}
+    >
       <DashboardNavbar />
-      <Box>{children}</Box>
+      <Box h="max-content" py={2}>
+        {children}
+      </Box>
     </Box>
   );
 };
