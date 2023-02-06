@@ -23,7 +23,7 @@ const DashboardNavbar = () => {
   }, [getDate, getHours, getMinutes]);
   return (
       <Box
-        h={{ base: "max-content", md: "15%" }}
+        h={{ base: "20%", md: "15%" }}
         w={{ base: "100%", md: "60%" }}
         display="flex"
         justifyContent="space-between"

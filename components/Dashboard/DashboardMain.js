@@ -12,7 +12,13 @@ const DashboardMain = ({ children }) => {
       p={{ base: "15px", md: "30px" }}
     >
       <DashboardNavbar />
-      <Box h="max-content" py={2}>
+      <Box
+        h={{ base: "75%", md: "80%" }}
+        mt={8}
+        bgColor="#393D43"
+        borderRadius="30px"
+        p="30px"
+      >
         {children}
       </Box>
     </Box>
