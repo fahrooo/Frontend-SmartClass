@@ -134,8 +134,8 @@ const Dashboard = () => {
             <Box
               w="100%"
               h={{ base: "max-content", md: "85%", xl: "85%" }}
-              py={2}
               overflowY="auto"
+              mt={{ base: 2, md: 8 }}
             >
               <Grid
                 templateColumns={{
