@@ -6,8 +6,9 @@ import DashboardSidebarItem from "./DashboardSidebarItem";
 import { useRouter } from "next/router";
 
 const DashboardSidebar = ({ items }) => {
-  // console.log(items);
   const { pathname } = useRouter();
+  const router = useRouter();
+
   return (
     <Box
       as="aside"
@@ -32,7 +33,11 @@ const DashboardSidebar = ({ items }) => {
       </Center>
       <VStack mt="30px" textAlign="center" gap="5px">
         {items?.map((item, index) => (
-          <DashboardSidebarItem key={index} item={item} pathname={pathname} />
+          <DashboardSidebarItem
+            key={index}
+            item={item}
+            pathname={pathname}
+          />
         ))}
       </VStack>
     </Box>

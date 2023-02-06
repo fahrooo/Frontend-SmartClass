@@ -174,12 +174,22 @@ const Dashboard = () => {
                   colSpan={2}
                   image={ac}
                   label="AC Utama"
+                  control={true}
+                  satuan="°C"
+                  maxValue={26}
+                  minValue={16}
+                  gapValue={1}
                 />
                 <DashboardDeviceItem
                   bgColor="#EEEAFF"
                   colSpan={1}
                   image={speaker}
                   label="Speaker"
+                  control={true}
+                  satuan="%"
+                  maxValue={100}
+                  minValue={0}
+                  gapValue={5}
                 />
               </Grid>
             </Box>
