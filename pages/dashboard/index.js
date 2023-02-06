@@ -189,7 +189,7 @@ const Dashboard = () => {
                   satuan="%"
                   maxValue={100}
                   minValue={0}
-                  gapValue={5}
+                  gapValue={50}
                 />
               </Grid>
             </Box>

@@ -8,6 +8,7 @@ import {
   VStack,
   Icon,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
 import {
@@ -27,21 +28,66 @@ const DashboardDeviceItem = ({
   gapValue,
 }) => {
   const [power, setPower] = useState(false);
-  const [value, setValue] = useState(20);
+  const [value, setValue] = useState(0);
 
-  const handleUp = () => {
+  const handleUp = async () => {
     if (value == maxValue) {
       setValue(maxValue);
+      try {
+        await axios.post("http://localhost:5000/relaypost", {
+          topic: "BANGTI",
+          message: value.toString(),
+        });
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       setValue(value + gapValue);
+      try {
+        await axios.post("http://localhost:5000/relaypost", {
+          topic: "BANGTI",
+          message: value.toString(),
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  const handleDown = () => {
+  const handleDown = async () => {
     if (value == minValue) {
       setValue(minValue);
+      try {
+        await axios.post("http://localhost:5000/relaypost", {
+          topic: "BANGTI",
+          message: value.toString(),
+        });
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       setValue(value - gapValue);
+      try {
+        await axios.post("http://localhost:5000/relaypost", {
+          topic: "BANGTI",
+          message: value.toString(),
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handlePower = async () => {
+    setPower(!power);
+
+    try {
+      await axios.post("http://localhost:5000/relaypost", {
+        topic: "BANGTI",
+        message: !power ? "on" : "off",
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -60,16 +106,12 @@ const DashboardDeviceItem = ({
             {power ? "ON" : "OFF"}
           </Badge>
         </Text>
-        <Switch
-          colorScheme="purple"
-          isChecked={power}
-          onChange={() => setPower(!power)}
-        />
+        <Switch colorScheme="purple" isChecked={power} onChange={handlePower} />
       </Box>
       <Center h="70%" gap={2}>
         <Image src={image} alt="door" style={{ width: "70%" }} />
         {control == true && (
-          <VStack mt={1}>
+          <VStack mt={1} w="30px">
             <Icon
               as={MdOutlineKeyboardArrowUp}
               boxSize={6}
