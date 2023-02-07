@@ -1,11 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import DashboardDeviceItem from "@/components/Dashboard/DashboardDeviceItem";
 import DashboardSidebar from "@/components/Dashboard/DashboardSidebar";
-import DashboardSidebarItem from "@/components/Dashboard/DashboardSidebarItem";
-import useRemoteUnits from "@/components/hooks/useRemoteUnits";
 import {
   Box,
-  Button,
   Center,
   Flex,
   Grid,
@@ -13,7 +10,6 @@ import {
   Text,
   useToast,
   Icon,
-  useFocusEffect,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -123,7 +119,8 @@ const Dashboard = () => {
                   justifyContent="center"
                 >
                   <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
-                    {hours}:{minutes < 10 ? "0" + minutes : minutes} {hours >= 12 ? "PM" : "AM"}
+                    {hours}:{minutes < 10 ? "0" + minutes : minutes}{" "}
+                    {hours >= 12 ? "PM" : "AM"}
                   </Text>
                   <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
                     {date}
@@ -135,7 +132,7 @@ const Dashboard = () => {
               w="100%"
               h={{ base: "max-content", md: "85%", xl: "85%" }}
               overflowY="auto"
-              mt={{ base: 2, md: 8 }}
+              py={{ base: 2, md: 8 }}
             >
               <Grid
                 templateColumns={{
@@ -293,7 +290,8 @@ const Dashboard = () => {
                 justifyContent="center"
               >
                 <Text color="#FFFFFF" fontSize="25px" fontWeight="700">
-                  {hours}:{minutes < 10 ? "0" + minutes : minutes} {hours >= 12 ? "PM" : "AM"}
+                  {hours}:{minutes < 10 ? "0" + minutes : minutes}{" "}
+                  {hours >= 12 ? "PM" : "AM"}
                 </Text>
                 <Text color="#FFFFFF" fontSize="20px" fontWeight="400">
                   {date}
