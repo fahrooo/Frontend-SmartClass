@@ -5,6 +5,7 @@ import logo from "../../assets/images/logo.png";
 import DashboardSidebarItem from "./DashboardSidebarItem";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const DashboardSidebar = ({ items }) => {
   const { pathname } = useRouter();
@@ -16,8 +17,9 @@ const DashboardSidebar = ({ items }) => {
 
       if (result?.status === 200) {
         Cookies.remove("email");
-        Cookies.remove("_verified");
-        Cookies.remove("_forgot");
+        Cookies.remove("role");
+        Cookies.remove("nama");
+        Cookies.remove("unit");
         Cookies.remove("isLogin");
         router.push("/");
       }

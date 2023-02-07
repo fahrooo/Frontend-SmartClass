@@ -38,6 +38,9 @@ const Login = ({ setForm }) => {
 
   useEffect(() => {
     Cookies.remove("email");
+    Cookies.remove("role");
+    Cookies.remove("nama");
+    Cookies.remove("unit");
     Cookies.remove("_verified");
     Cookies.remove("_forgot");
     Cookies.remove("isLogin");
