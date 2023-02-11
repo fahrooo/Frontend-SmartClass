@@ -10,6 +10,15 @@ import {
   Text,
   useToast,
   Icon,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -27,6 +36,7 @@ import { SiGoogleclassroom } from "react-icons/si";
 import DashboardKelasItem from "@/components/Dashboard/DashboardKelasItem";
 import { formatDate } from "node-format-date";
 import generateSidebarItems from "@/utils/sidebar";
+import QRCodeModal from "@/utils/Modal/QRCodeModal";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -51,6 +61,16 @@ const Dashboard = () => {
   }, [getDate, getHours, getMinutes]);
 
   let sidebarItems = generateSidebarItems();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [qrValue, setQrValue] = useState("");
+
+  const handleQR = () => {
+    onOpen();
+    setQrValue("TI-KELAS-A")
+  };
+
   return (
     <Flex
       maxH={{ base: "max-content", md: "100vh" }}
@@ -134,6 +154,10 @@ const Dashboard = () => {
               overflowY="auto"
               py={{ base: 2, md: 8 }}
             >
+              <Button colorScheme={"blue"} onClick={handleQR} mb={4}>
+                QR Code
+              </Button>
+              <QRCodeModal isOpen={isOpen} onClose={onClose} value={qrValue} />
               <Grid
                 templateColumns={{
                   base: "repeat(2, 1fr)",
