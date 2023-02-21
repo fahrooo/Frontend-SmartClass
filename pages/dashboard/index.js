@@ -37,7 +37,9 @@ import DashboardKelasItem from "@/components/Dashboard/DashboardKelasItem";
 import { formatDate } from "node-format-date";
 import generateSidebarItems from "@/utils/sidebar";
 import QRCodeModal from "@/utils/Modal/QRCodeModal";
+import io from "socket.io-client";
 
+const socket = io.connect("http://localhost:5000");
 const Dashboard = () => {
   const router = useRouter();
   const toast = useToast();
@@ -68,7 +70,13 @@ const Dashboard = () => {
 
   const handleQR = () => {
     onOpen();
-    setQrValue("TI-KELAS-A")
+    setQrValue("TI-KELAS-A");
+  };
+
+  const handleSendSocket = () => {
+    socket.emit("hello", {
+      message: "HAI REY",
+    });
   };
 
   return (
@@ -156,6 +164,9 @@ const Dashboard = () => {
             >
               <Button colorScheme={"blue"} onClick={handleQR} mb={4}>
                 QR Code
+              </Button>
+              <Button colorScheme={"blue"} onClick={handleSendSocket} mb={4} ml={4}>
+                Send Socket
               </Button>
               <QRCodeModal isOpen={isOpen} onClose={onClose} value={qrValue} />
               <Grid
