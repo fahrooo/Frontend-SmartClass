@@ -37,9 +37,9 @@ import DashboardKelasItem from "@/components/Dashboard/DashboardKelasItem";
 import { formatDate } from "node-format-date";
 import generateSidebarItems from "@/utils/sidebar";
 import QRCodeModal from "@/utils/Modal/QRCodeModal";
-import io from "socket.io-client";
+import MicrophoneStream from "microphone-stream";
+import getUserMedia from "get-user-media-promise";
 
-const socket = io.connect("http://localhost:5000");
 const Dashboard = () => {
   const router = useRouter();
   const toast = useToast();
@@ -73,10 +73,29 @@ const Dashboard = () => {
     setQrValue("TI-KELAS-A");
   };
 
-  const handleSendSocket = () => {
-    socket.emit("hello", {
-      message: "HAI REY",
-    });
+  const [stremMic, setStreamMic] = useState("");
+
+  const handlePlayStreamMic = () => {
+    const micStream = new MicrophoneStream();
+    getUserMedia({ video: false, audio: true })
+      .then(function (stream) {
+        setStreamMic(stream);
+        micStream.setStream(stream);
+        console.log("stream", stream);
+        micStream.on("data", function (chunk) {
+          const raw = MicrophoneStream.toRaw(chunk);
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const handleStopStreamMic = () => {
+    const micStream = new MicrophoneStream();
+    micStream.setStream(stremMic);
+    micStream.stop();
+    console.log(stremMic);
   };
 
   return (
@@ -165,8 +184,21 @@ const Dashboard = () => {
               <Button colorScheme={"blue"} onClick={handleQR} mb={4}>
                 QR Code
               </Button>
-              <Button colorScheme={"blue"} onClick={handleSendSocket} mb={4} ml={4}>
-                Send Socket
+              <Button
+                colorScheme={"blue"}
+                onClick={handlePlayStreamMic}
+                mb={4}
+                ml={4}
+              >
+                Play
+              </Button>
+              <Button
+                colorScheme={"red"}
+                onClick={handleStopStreamMic}
+                mb={4}
+                ml={4}
+              >
+                Stop
               </Button>
               <QRCodeModal isOpen={isOpen} onClose={onClose} value={qrValue} />
               <Grid
