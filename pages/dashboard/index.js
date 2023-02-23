@@ -81,7 +81,6 @@ const Dashboard = () => {
       .then(function (stream) {
         setStreamMic(stream);
         micStream.setStream(stream);
-        console.log("stream", stream);
         micStream.on("data", function (chunk) {
           const raw = MicrophoneStream.toRaw(chunk);
         });
@@ -95,7 +94,6 @@ const Dashboard = () => {
     const micStream = new MicrophoneStream();
     micStream.setStream(stremMic);
     micStream.stop();
-    console.log(stremMic);
   };
 
   return (
