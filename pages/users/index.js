@@ -1,9 +1,8 @@
-import DashboardLayout from "@/components/Dashboard/DashboardLayout";
-import { Text } from "@chakra-ui/react";
-import React from "react";
+import DashboardLayout from "@/common/layout/DashboardLayout";
+import Users from "@/modules/Users";
 
 const UserDashboard = () => {
-  return <Text color="white">UserDashboard</Text>;
+  return <Users />;
 };
 
 UserDashboard.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;

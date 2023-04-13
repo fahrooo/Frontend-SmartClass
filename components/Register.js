@@ -5,6 +5,7 @@ import FormRegister1 from "./FormRegister1";
 import FormRegister2 from "./FormRegister2";
 import { useRouter } from "next/router";
 import useActionGlobal from "@/store/UseActionGlobal";
+import Cookies from "js-cookie";
 
 const Register = ({ setForm }) => {
   const toast = useToast();
@@ -42,7 +43,7 @@ const Register = ({ setForm }) => {
       ) {
         setIsLoading(false);
         setDisabled(false);
-        localStorage.setItem("email", JSON.stringify([email]));
+        Cookies.set("email", email);
         router.push("/verifyemail");
         toast({
           title: "Verifikasi Email!",

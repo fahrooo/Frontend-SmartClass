@@ -1,3 +1,9 @@
+* {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -38,13 +44,6 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
-}
-
-* {
-  -ms-overflow-style: none;
-}
-::-webkit-scrollbar {
-  display: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -111,4 +110,11 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.isiTabel:nth-child(odd) {
+  background-color: #eeeeee;
+}
+.isiTabel:nth-child(even) {
+  background-color: #e0e0e0;
 }
